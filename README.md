@@ -25,6 +25,7 @@ But where do we keep this `int`? How do we update GUI when it's read or changed?
 The **prefnotifiers** approach is to wrap each preference parameter into a `ValueNotifier` instance.
 
 So we declare the parameter only once:
+
 ```final ValueNotifier<int> myValue = PrefItem<int>(storage, "intName");```
 
 
