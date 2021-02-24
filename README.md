@@ -41,8 +41,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Changes to the `value` will be immediately available, although actual writing may take some time. The following code
-increases value by two:
+The code above will also rebuild the widget when value is changed.
 
 ```
 
