@@ -67,10 +67,10 @@ Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.  Whe
 on which object is passed to the `PrefItem` constructor.
 
 ```dart
-final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
 
-final param1 = PrefItem<int>(storage, "param1");
-final param2 = PrefItem<String>(storage, "param2");
+final paramKeptInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), "param1");
+
+final paramKeptInRam = PrefItem<String>(RamPrefsStorage(), "param2");
 
 ```
 
