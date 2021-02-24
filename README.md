@@ -13,7 +13,7 @@ Suppose, we have parameter named *TheParameter* is the shared preferences. With 
 we would normally read it like that:
 
 ```dart
-var currentValue = await (SharedPreferences.getInstance().then((sp)=>sp.getInt("TheParameter"));
+var currentValue = await (await SharedPreferences.getInstance()).getInt("TheParameter");
 ```
 
 
