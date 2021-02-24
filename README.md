@@ -26,6 +26,20 @@ Widget build(BuildContext context) {
 }
 ```
 
+More interesting, we can rebuild the widget when the value will be available:
+
+```
+Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+        valueListenable: theParameter,
+        builder: (BuildContext context, int value, Widget child) {
+            if (value==null)
+                return Text("Not initialized");
+            else
+                return Text("Value is $value");
+        });
+}
+```
 
 Let's wait for :
 
