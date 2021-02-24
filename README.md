@@ -26,7 +26,9 @@ The **prefnotifiers** approach is to wrap each preference parameter into a `Valu
 
 So we declare the parameter only once:
 
-```final ValueNotifier<int> myValue = PrefItem<int>(storage, "intName");```
+```
+final ValueNotifier<int> myValue = PrefItem<int>(storage, "intName");
+```
 
 
 `PrefItem` instances
