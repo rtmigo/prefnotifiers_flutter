@@ -45,7 +45,6 @@ The code above will also rebuild the widget when value is changed. Let's change 
 
 ```
 onTap: () {
-
     // myParameter.value is 3, shared prefs is 3
 
     myParameter.value += 1;
