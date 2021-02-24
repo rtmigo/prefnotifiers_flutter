@@ -18,7 +18,7 @@ Reading is is not finished yet. But we can already access `theParameter.value`. 
 We already can use this value in synchronous methods succh as widget builders:
 
 ```
-build(context) {
+Widget build(BuildContext context) {
     if (theParameter.value==null)
         return Text("Not initialized");
     else
