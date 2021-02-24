@@ -63,7 +63,7 @@ onTap: () {
 
 ## PrefsStorage
 
-`PrefsStorage` is an abstract base class describing a storage. The storage can read and write named parameters
+`PrefsStorage` is an abstract base class describing a storage. The storage should read and write named parameters
 of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
 `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
