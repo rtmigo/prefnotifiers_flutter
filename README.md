@@ -44,7 +44,6 @@ Widget build(BuildContext context) {
 The code above will also rebuild the widget when value is changed.
 
 ```
-
 onTap: () {
 
     // myParameter.value is 3, shared prefs is 3
