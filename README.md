@@ -1,6 +1,12 @@
 # prefnotifiers
 
-Wraps particular app settings into `ValueNotifier` instances, so they can be used with `ValueListenableBuilder`
+`PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a "model" of an individual application
+preference parameter.
+
+Wraps individual application preference settings into a `ValueNotifier` instances.
+
+
+ so they can be used with `ValueListenableBuilder`
 or [Provider](https://pub.dev/packages/provider).
 
 Without **prefnotifiers** we can read and write preferences asynchronously:
@@ -29,6 +35,8 @@ So we declare the parameter only once:
 ```
 final ValueNotifier<int> myValue = PrefItem<int>(storage, "intName");
 ```
+
+Now we can sync
 
 
 `PrefItem` instances
