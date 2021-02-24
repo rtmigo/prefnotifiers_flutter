@@ -14,7 +14,7 @@ Let's declare the model for this parameter:
 final theParameter = PrefItem<int>(storage, "TheParameter");
 ```
 
-Reading is is not finished yet. But we can already access `theParameter.value`. By default, it returns `null`.
+Reading is is not finished yet. But we already can access `theParameter.value`. By default, it returns `null`.
 We already can use this value in synchronous code:
 
 ```
