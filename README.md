@@ -50,7 +50,7 @@ onTap: () {
     // myParameter.value is 3, shared prefs is 3
     myParameter.value += 1;
     myParameter.value += 1;
-    // myParameter.value is 5, shared prefs is still 3
+    // myParameter.value is 5, shared prefs is still 3, but we're already scheduled writing of 5 
 }
 
 ```
