@@ -9,12 +9,18 @@ PrefItem serves as a **model** for an individual parameter stored in shared pref
 shared preferences are asynchronous, the `PrefItem.value` is always available for synchronous calls.
 It provides *"the best value we have for the moment"*. The actual read/write operations happen in background.
 
-Suppose, we have parameter named *TheParameter* is the shared preferences.
+Suppose, we have parameter named *TheParameter* is the shared preferences. With [shared_preferences](https://pub.dev/packages/shared_preferences) library
+we would normally read it like that:
+
+```dart
+var currentValue = await (SharedPreferences.getInstance().then((sp)=>sp.getInt("TheParameter"));
+```
+
 
 Let's declare the model for this parameter:
 
 ```dart
-final theParameter = PrefItem<int>(storage, "TheParameter");
+final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
 Reading is is not finished yet. But we already can access `theParameter.value`. By default, it returns `null`.
