@@ -4,7 +4,7 @@ This library makes it easy to use [shared_preferences](https://pub.dev/packages/
 state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
 
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a **model** for an individual preference
-parameter. It reads and writes data asynchronously, but makes it immediately available as `PrefItem.value` property.
+parameter. It reads and writes data asynchronously, but makes it available yo synchronous code as `PrefItem.value` property.
 
 We only need to declare it once:
 
@@ -12,6 +12,7 @@ We only need to declare it once:
 final myValueModel = PrefItem<int>(storage, "ourParamName");
 ```
 
+Now we
 
 
 
