@@ -26,7 +26,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-More interesting, we can rebuild the widget when the value will be available:
+We can automatically rebuild the widget when the value will be available:
 
 ```
 Widget build(BuildContext context) {
