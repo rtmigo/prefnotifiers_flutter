@@ -12,8 +12,15 @@ final prefs = await SharedPreferences.getInstance();
 var currentValue = await prefs.getInt("TheParameter");
 ```
 
-There are two lines of problem. First, the same data is now represented by two entities: the `currentValue` variable and
-the real storage. When we change the `currentValue`, the storage is not affected.
+There are two lines of problem.
+
+First, this code is asynchronous. We cannot use such code directly when building a widget.
+
+Second, the same data is now represented by two entities: the `currentValue` variable and
+the real storage. Which is conceptually not very wise. We can change the `currentValue`, but the storage
+will not be not affected.
+
+
 
 
 ## PrefItem
