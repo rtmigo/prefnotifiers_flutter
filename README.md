@@ -13,14 +13,14 @@ Suppose, we have parameter named *TheParameter* is the shared preferences.
 
 Let's declare the model for this parameter:
 
-```
+```dart
 final theParameter = PrefItem<int>(storage, "TheParameter");
 ```
 
 Reading is is not finished yet. But we already can access `theParameter.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
-```
+```dart
 Widget build(BuildContext context) {
     if (theParameter.value==null)
         return Text("Not initialized yet");
@@ -31,7 +31,7 @@ Widget build(BuildContext context) {
 
 Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `theParameter` will be available:
 
-```
+```dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: theParameter,
@@ -70,7 +70,7 @@ of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
 `RamPrefsStorage` stores preferences in RAM. This class is mostly useful for testing.
 
-```
+```dart
 final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
 ```
 
