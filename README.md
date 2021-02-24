@@ -8,7 +8,7 @@ state management libraries like [provider](https://pub.dev/packages/provider) or
 We only need to declare it once:
 
 ```
-final myValue = PrefItem<int>(storage, "intName");
+final myValue = PrefItem<int>(storage, "intParamName");
 ```
 
 
