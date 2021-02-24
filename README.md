@@ -15,6 +15,16 @@ final theParameter = PrefItem<int>(storage, "TheParameter");
 ```
 
 Reading is is not finished yet. But we can already access `theParameter.value`. It returns default value `null`.
+We already can use this value in synchronous methods succh as widget builders:
+
+```
+build(context) {
+    if (theParameter.value==null)
+        return Text("Not initialized");
+    else
+        return Text("Value is ${theParameter.value}");
+}
+```
 
 
 Let's wait for :
