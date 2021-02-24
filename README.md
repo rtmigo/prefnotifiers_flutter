@@ -6,18 +6,24 @@ state management libraries like [provider](https://pub.dev/packages/provider) or
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a **model** for an individual preference
 parameter. It reads and writes data asynchronously. But `PrefItem.value` provides *"the best value we have for the moment"* in synchronous manner.
 
-We only need to declare it once:
+Suppose, we have parameter named *TheParameter* is the shared preferences. It's value is 3.
+
+Let's declare the model for this parameter:
 
 ```
-final myValueModel = PrefItem<int>(storage, "ourParamName");
+final theParameter = PrefItem<int>(storage, "TheParameter");
 ```
 
-The object is not initialized yet, so `myValueModel.value` returns `null`. But the object already initiated
-asynchronous reading from shared preferences. Let's wait:
+Reading is is not finished yet. But we can already access `theParameter.value`. It returns default value `null`.
+
+
+Let's wait for :
 
 ```
 await myValueModel.initialized;
 ```
+
+
 
 Now `myValueModel.value` returns the actual value that was stored in preferences. Let's change it:
 
