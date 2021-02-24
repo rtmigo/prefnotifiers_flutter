@@ -28,7 +28,7 @@ Widget build(BuildContext context) {
 
 We can automatically rebuild the widget when the value will be read or changed:
 
-```Widget build(BuildContext context) {
+```W idget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: theParameter,
         builder: (BuildContext context, int value, Widget child) {
@@ -37,7 +37,7 @@ We can automatically rebuild the widget when the value will be read or changed:
             else
                 return Text("Value is $value");
         });
-}```
+} ```
 
 Changes to the `value` will be immediately available, although actual writing may take some time. The following code
 increases value by two:
