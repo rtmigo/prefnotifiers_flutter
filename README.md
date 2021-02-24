@@ -5,6 +5,13 @@ state management libraries like [provider](https://pub.dev/packages/provider).
 
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem is a **model** of an individual preference parameter.
 
+We only need to declare it once:
+
+```
+final myValue = PrefItem<int>(storage, "intName");
+```
+
+
 Wraps individual application preference settings into a `ValueNotifier` instances.
 
 
@@ -34,9 +41,6 @@ The **prefnotifiers** approach is to wrap each preference parameter into a `Valu
 
 So we declare the parameter only once:
 
-```
-final ValueNotifier<int> myValue = PrefItem<int>(storage, "intName");
-```
 
 Now we can sync
 
