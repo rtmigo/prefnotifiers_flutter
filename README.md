@@ -20,7 +20,7 @@ We already can use this value in synchronous methods such as widget builders:
 ```
 Widget build(BuildContext context) {
     if (theParameter.value==null)
-        return Text("Not initialized");
+        return Text("Not initialized yet");
     else
         return Text("Value is ${theParameter.value}");
 }
@@ -34,7 +34,7 @@ Widget build(BuildContext context) {
         valueListenable: theParameter,
         builder: (BuildContext context, int value, Widget child) {
             if (value==null)
-                return Text("Not initialized");
+                return Text("Not initialized yet");
             else
                 return Text("Value is $value");
         });
