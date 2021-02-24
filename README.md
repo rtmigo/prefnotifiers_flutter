@@ -9,7 +9,7 @@ parameter. It reads and writes data asynchronously, but makes it immediately ava
 We only need to declare it once:
 
 ```
-final myValue = PrefItem<int>(storage, "ourParamName");
+final myValueModel = PrefItem<int>(storage, "ourParamName");
 ```
 
 
