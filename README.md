@@ -38,8 +38,7 @@ Widget build(BuildContext context) {
             else
                 return Text("Value is $value");
         });
-}
-```
+}```
 
 Changes to the `value` will be immediately available, although actual writing may take some time. The following code
 increases value by two:
