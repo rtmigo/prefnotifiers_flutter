@@ -66,13 +66,6 @@ onTap: () {
 Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.  Where and how the data is stored depends
 on which object is passed to the `PrefItem` constructor.
 
-- `PrefsStorage` is an abstract base class describing a storage. The storage should read and write named parameters
-of types `int`, `double`, `String`, `StringList` and `DateTime`.
-
-- `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
-
-- `RamPrefsStorage` stores preferences in RAM. This class is mostly useful for testing.
-
 ```dart
 final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
 
@@ -80,6 +73,15 @@ final param1 = PrefItem<int>(storage, "param1");
 final param2 = PrefItem<String>(storage, "param2");
 
 ```
+
+- `PrefsStorage` is an abstract base class describing a storage. The storage should read and write named parameters
+of types `int`, `double`, `String`, `StringList` and `DateTime`.
+
+- `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
+
+- `RamPrefsStorage` stores preferences in RAM. This class is mostly useful for testing.
+
+
 
 
 
