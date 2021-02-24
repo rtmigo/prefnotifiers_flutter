@@ -29,7 +29,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the value will be available:
+Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `theParameter` will be available:
 
 ```
 Widget build(BuildContext context) {
