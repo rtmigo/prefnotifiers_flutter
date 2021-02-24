@@ -63,6 +63,9 @@ onTap: () {
 
 ## PrefsStorage
 
+Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.  Where and how the data is stored depends
+on which object is passed to the `PrefItem` constructor.
+
 `PrefsStorage` is an abstract base class describing a storage. The storage should read and write named parameters
 of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
