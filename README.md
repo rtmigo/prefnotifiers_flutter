@@ -75,7 +75,11 @@ of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
 ```dart
 final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
+
+final param1 = PrefItem<int>(storage, "param1");
+final param2 = PrefItem<String>(storage, "param2");
+
 ```
 
-Other implementations can be made for keeping preferences in files or SQLite databases.
+
 
