@@ -87,8 +87,8 @@ final param2 =  PrefItem<double>(storage, "param2");
 
 ```
 
-- `PrefsStorage` is an abstract base class describing a storage. A descendant should read and write named parameters
-of types `int`, `double`, `String`, `StringList` and `DateTime`.
+- `PrefsStorage` is an abstract base class describing a storage. A descendant should be able of reading and writing
+named values of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
 - `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
 
