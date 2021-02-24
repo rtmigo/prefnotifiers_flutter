@@ -4,14 +4,23 @@ This library makes it easy to use [shared_preferences](https://pub.dev/packages/
 state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
 
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a **model** for an individual preference
-parameter. It reads and writes data asynchronously. But `PrefItem.value` property is always ready to provide
-"the best value we have" in synchronous manner.
+parameter. It reads and writes data asynchronously. But `PrefItem.value` provides "the best value we have" in synchronous manner.
 
 We only need to declare it once:
 
 ```
 final myValueModel = PrefItem<int>(storage, "ourParamName");
+
+
+// myValueModel.value returns null
+
+await myValueModel.initialized;
+
+// myValueModel.value returns null
+
 ```
+
+
 
 Now we
 
