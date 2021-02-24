@@ -1,7 +1,7 @@
 # prefnotifiers
 
 This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
-state management libraries like [Provider](https://pub.dev/packages/provider).
+state management libraries like [provider](https://pub.dev/packages/provider).
 
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a "model" of an individual application
 preference parameter.
