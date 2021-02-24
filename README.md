@@ -28,7 +28,7 @@ Widget build(BuildContext context) {
 
 We can automatically rebuild the widget when the value will be read or changed:
 
-```W idget build(BuildContext context) {
+``` Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: theParameter,
         builder: (BuildContext context, int value, Widget child) {
