@@ -3,7 +3,7 @@
 This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
 state management libraries like [provider](https://pub.dev/packages/provider).
 
-`PrefItem` inherits from the `ValueNotifier` class. PrefItem is a "model" of an individual preference parameter.
+`PrefItem` inherits from the `ValueNotifier` class. PrefItem is a **model** of an individual preference parameter.
 
 Wraps individual application preference settings into a `ValueNotifier` instances.
 
