@@ -47,14 +47,15 @@ increases value by two:
 ```
 
 onTap: () {
-
-    // shared prefs is 3, myParameter.value is 3
+    // myParameter.value is 3, shared prefs is 3
     myParameter.value += 1;
     myParameter.value += 1;
-    // shared prefs is 3, myParameter.value is 5
+    // myParameter.value is 5, shared prefs is still 3
 }
 
 ```
+
+A few miiliceonds later
 
 Let's wait for :
 
