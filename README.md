@@ -3,8 +3,10 @@
 This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
 state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
 
-`PrefItem` inherits from the `ValueNotifier` class. PrefItem serves as a **model** for an individual preference
-parameter. It reads and writes data asynchronously. But `PrefItem.value` provides *"the best value we have for the moment"* in synchronous manner.
+PrefItem serves as a **model** for an individual preference parameter. The `PrefItem.value` provides *"the best value
+we have for the moment"*. The actual data is being read and written asynchronously in background.
+
+`PrefItem` inherits from the `ValueNotifier` class.
 
 Suppose, we have parameter named *TheParameter* is the shared preferences.
 
