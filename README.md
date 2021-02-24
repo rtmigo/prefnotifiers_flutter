@@ -1,7 +1,7 @@
 # prefnotifiers
 
 This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
-state management libraries like [provider](https://pub.dev/packages/provider).
+state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
 
 `PrefItem` inherits from the `ValueNotifier` class. PrefItem is a **model** of an individual preference parameter.
 
@@ -10,6 +10,8 @@ We only need to declare it once:
 ```
 final myValue = PrefItem<int>(storage, "intName");
 ```
+
+
 
 
 Wraps individual application preference settings into a `ValueNotifier` instances.
