@@ -19,7 +19,14 @@ asynchronous reading from shared preferences. Let's wait:
 await myValueModel.initialized;
 ```
 
-Now
+Now `myValueModel.value` returns the actual value that was stored in preferences.
+
+```
+myValueModel.value = 5;
+```
+
+Now `myValueModel.value` returns 5. And asynchronous writing started.
+
 
 
 // now the value is readt  myValueModel.value returns returns null
