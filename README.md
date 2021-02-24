@@ -17,7 +17,7 @@ var currentValue = await prefs.getInt("TheParameter");
 ```
 
 There are two lines of problem. First, the same data is now represented by two entities: the `currentValue` variable and
-the real storage. We can overwrite the `currentValue`, forgetting that the storage will not be affected.
+the real storage. We can change the `currentValue`, forgetting that the storage will not be affected.
 
 But l
 Let's declare the model for this parameter:
