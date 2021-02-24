@@ -5,9 +5,9 @@ state management libraries like [provider](https://pub.dev/packages/provider) or
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences. Although reading and writing
 shared preferences are slow asynchronous operations, the `PrefItem.value` is always available for synchronous calls.
-It provides *"the best value we have for the moment"*. The actual async operations happen in background.
+It provides *"the best value we have for the moment"*. The actual read/write operations happen in background.
 
-`PrefItem` inherits from the `ValueNotifier` class.
+
 
 Suppose, we have parameter named *TheParameter* is the shared preferences.
 
@@ -29,7 +29,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-We can automatically rebuild the widget when the value will be available:
+Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the value will be available:
 
 ```
 Widget build(BuildContext context) {
