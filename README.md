@@ -12,14 +12,14 @@ We only need to declare it once:
 final myValueModel = PrefItem<int>(storage, "ourParamName");
 ```
 
-The object is not initialized yet, so myValueModel.value returns null. But it actually started reading data from
+The object is not initialized yet, so `myValueModel.value` returns `null`. But it actually started reading data from
 shared preferences. Let's wait:
 
 ```
 await myValueModel.initialized;
 ```
 
-Now  
+Now
 
 
 // now the value is readt  myValueModel.value returns returns null
