@@ -46,7 +46,7 @@ Widget build(BuildContext context) {
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
-```
+```dart
 onTap: () {
     // myParameter.value is 3, shared prefs is 3
 
