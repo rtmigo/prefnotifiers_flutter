@@ -68,11 +68,22 @@ on which object is passed to the `PrefItem` constructor.
 
 ```dart
 
-final paramInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
+final keptInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
 
-final paramInRam = PrefItem<String>(RamPrefsStorage(), ...);
+final keptInRam = PrefItem<String>(RamPrefsStorage(), ...);
 
-final paramInFile = PrefItem<String>(CustomJsonPrefsStorage(), ...);
+final keptInFile = PrefItem<String>(CustomJsonPrefsStorage(), ...);
+
+```
+
+But usually the same instance of `PrefsStorage` shared between multiple PrefItems:
+
+```dart
+
+final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
+
+final param1 =  PrefItem<String>(storage, "param1");
+final param2 =  PrefItem<double>(storage, "param2");
 
 ```
 
