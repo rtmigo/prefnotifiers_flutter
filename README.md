@@ -51,8 +51,8 @@ onTap: () {
     myParameter.value += 1;
     myParameter.value += 1;
 
-    // now myParameter.value changed to 5, shared prefs is still 3.
+    // now myParameter.value changed to 5.
     // The widget will rebuild on the next frame.
-    // The value will we written to shared preferences asynchronously soon
+    // Shared prefs is still 3, but asynchronous writing already started
 }
 ```
