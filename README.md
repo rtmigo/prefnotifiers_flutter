@@ -68,9 +68,11 @@ on which object is passed to the `PrefItem` constructor.
 
 ```dart
 
-final paramKeptInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), "param1");
+final paramInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
 
-final paramKeptInRam = PrefItem<String>(RamPrefsStorage(), "param2");
+final paramInRam = PrefItem<String>(RamPrefsStorage(), ...);
+
+final paramInFile = PrefItem<String>(CustomJsonPrefsStorage(), ...);
 
 ```
 
