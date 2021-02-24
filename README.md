@@ -47,6 +47,7 @@ Changes to the `value` will be immediately available, although actual writing ma
 
 onTap: () {
     myParameter.value += 1;
+    myParameter.value += 1;
 }
 
 ```
