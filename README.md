@@ -13,10 +13,11 @@ Suppose, we have parameter named *TheParameter* is the shared preferences. With 
 we would normally read it like that:
 
 ```dart
-var currentValue = await (await SharedPreferences.getInstance()).getInt("TheParameter");
+final prefs = await SharedPreferences.getInstance();
+var currentValue = await prefs.getInt("TheParameter");
 ```
 
-
+But l
 Let's declare the model for this parameter:
 
 ```dart
