@@ -50,7 +50,8 @@ onTap: () {
     // myParameter.value is 3, shared prefs is 3
     myParameter.value += 1;
     myParameter.value += 1;
-    // myParameter.value is 5, shared prefs is still 3, but will be written asynchronously soon
+    // myParameter.value is 5, shared prefs is still 3,
+    // but will be written asynchronously soon
 }
 
 ```
