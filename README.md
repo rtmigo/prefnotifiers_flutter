@@ -68,7 +68,11 @@ of types `int`, `double`, `String`, `StringList` and `DateTime`.
 
 `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
 
-`RamPrefsStorage` stores preferences in RAM. It actually only useful for testing.
+`RamPrefsStorage` stores preferences in RAM. This class is mostly useful for testing.
+
+```
+final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
+```
 
 Other implementations can be made for keeping preferences in files or SQLite databases.
 
