@@ -13,7 +13,7 @@ var currentValue = await prefs.getInt("TheParameter");
 ```
 
 There are two lines of problem. First, the same data is now represented by two entities: the `currentValue` variable and
-the real storage. We can change the `currentValue`, forgetting that the storage will not be affected.
+the real storage. When we change the `currentValue`, the storage is not affected.
 
 
 ## PrefItem
