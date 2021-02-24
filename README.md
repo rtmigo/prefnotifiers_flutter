@@ -41,6 +41,16 @@ Widget build(BuildContext context) {
 }
 ```
 
+Changes to the `value` will be immediately available, although actual writing may take some time.
+
+```
+
+onTap: () {
+    myParameter.value += 1;
+}
+
+```
+
 Let's wait for :
 
 ```
