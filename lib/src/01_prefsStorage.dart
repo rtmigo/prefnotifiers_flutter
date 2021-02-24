@@ -21,9 +21,30 @@
 // DEALINGS IN THE SOFTWARE.
 
 
-library prefnotifiers;
+abstract class PrefsStorage
+{
+  // абстрактный класс, ссылку на который можно отдаваь алгоритмической части приложения
 
-export 'src/01_prefsStorage.dart';
-export 'src/02_ramPrefsStorage.dart';
-export 'src/02_sharedPrefsStorage.dart';
-export 'src/10_prefItem.dart';
+  Future<String> getString(String key);
+  Future<bool> getBool(String key);
+  Future<int> getInt(String key);
+  Future<double> getDouble(String key);
+  Future<List<String>> getStringList(String key);
+
+  Future<void> setString(String key, String value);
+  Future<void> setDouble(String key, double value);
+  Future<void> setInt(String key, int value);
+  Future<void> setBool(String key, bool value);
+  Future<void> setStringList(String key, List<String> value);
+
+  Future<Set<String>> getKeys(String key);
+
+  Future<void> setDateTime(String key, DateTime value) => this.setString(key, value!=null ? value.toIso8601String() : null);
+  Future<DateTime> getDateTime(String key) async
+  {
+    String val = await this.getString(key);
+    if (val==null)
+      return null;
+    return DateTime.parse(val);
+  }
+}

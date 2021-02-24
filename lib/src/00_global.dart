@@ -21,9 +21,7 @@
 // DEALINGS IN THE SOFTWARE.
 
 
-library prefnotifiers;
+var prefnotifiersLog = (String txt) => print("prefnotifiers: $txt");
 
-export 'src/01_prefsStorage.dart';
-export 'src/02_ramPrefsStorage.dart';
-export 'src/02_sharedPrefsStorage.dart';
-export 'src/10_prefItem.dart';
+/// Set ```prefnotifiersLogVerbose=null``` to mute verbose logging.
+var prefnotifiersLogVerbose = (String txt) => prefnotifiersLog?.call(txt);

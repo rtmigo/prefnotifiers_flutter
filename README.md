@@ -60,3 +60,14 @@ onTap: () {
     // already started. It will update in a few milliseconds
 }
 ```
+
+## PrefsStorage
+
+`PrefsStorage` is an abstract base class describing some way of storing preferences.
+
+`SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences).
+
+`RamPrefsStorage` stores preferences in RAM. It actually only useful for testing.
+
+Other implementations can be made for keeping preferences in files or SQLite databases.
+
