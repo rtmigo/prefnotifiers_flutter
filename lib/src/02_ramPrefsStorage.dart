@@ -26,8 +26,6 @@ import '01_prefsStorage.dart';
 /// A [PrefsStorage] that keeps all the data in RAM only. Useful for testing.
 class RamPrefsStorage extends PrefsStorage
 {
-  // хранит все данные в Map. Полезен для тестирования
-
   Map<String,dynamic> _data = Map<String,dynamic>();
 
   Future<String> getString(String key) async => _data[key];

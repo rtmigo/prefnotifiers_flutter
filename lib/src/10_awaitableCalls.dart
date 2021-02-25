@@ -42,16 +42,6 @@ import 'dart:async';
 /// ```
 class AwaitableCalls
 {
-  // допустим, моя программа асинхронно записывает и читает некое значение. Но прежде чем его асинхронно прочитать,
-  // я считаю нужным дождаться окончания всех асинхронных процедур записи.
-  //
-  // Тогда запись я делаю так:
-  //   writingCalls.run(writeFunc);
-  //
-  // А чтение так:
-  //   await writingCalls.completed();
-  //   await readFunc();
-
   List<Completer> _items = List<Completer>();
 
   Future run(func) async

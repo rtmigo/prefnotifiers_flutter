@@ -30,8 +30,6 @@ import '02_ramPrefsStorage.dart';
 /// A [PrefsStorage] that stores the data in platform-dependent [SharedPreferences].
 class SharedPrefsStorage extends PrefsStorage
 {
-  // опирается на SharedPreferences из сторонней библиотеки
-
   Future<SharedPreferences> _sp = SharedPreferences.getInstance();
 
   Future<String> getString(String key) async => (await this._sp).getString(key);
