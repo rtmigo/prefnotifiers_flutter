@@ -27,7 +27,7 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 
 - `param` object can be used as the only representation of `"TheParameter"` in the whole program
 - `param.value` allows indirectly read and write the shared preference value
-- synchronous `build` methods can access value immediately
+- synchronous `Widget build(_)` methods can access value immediately
 - `param.addListener` makes it possible to track changes of the value
 
 
