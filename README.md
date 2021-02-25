@@ -25,7 +25,7 @@ The same code with `PrefItem` look like that:
 final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-We can use `theParameter` as the only representation of parameter in the whole program. We use
+We can use `theParameter` as the only representation of stored `"TheParameter"` in the whole program. We use
 `theParameter.value` to get and set the value, to build widgets and so on.
 
 
