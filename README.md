@@ -36,10 +36,9 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 
 ## PrefItem
 
-PrefItem serves as a **model** for an individual parameter stored in shared preferences. `PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
+PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
-
-Let's declare the model for this parameter:
+`PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
 
 ```dart
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
