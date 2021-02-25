@@ -25,7 +25,7 @@ This library suggests using `PrefItem` object for the same task:
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-- We can use `param` object as the only representation of `"TheParameter"` in the whole program
+- `param` object can be used as the only representation of `"TheParameter"` in the whole program
 - `param.value` allows indirectly read and write the shared preferences value
 - synchronous `build` methods can access value immediately
 - `param.addListener` makes it possible to attach callback to track changes of the value
