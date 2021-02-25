@@ -87,7 +87,7 @@ onTap: () {
 }
 ```
 
-## PrefsStorage
+### PrefsStorage
 
 Each `PrefItem` relies on a `PrefsStorage` that actually stores the values. The way the data is stored depends on which object is passed
  to the `PrefItem` constructor.
