@@ -1,7 +1,10 @@
 # prefnotifiers
 
-This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
-state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
+This library helps to wrap individual [shared_preferences](https://pub.dev/packages/shared_preferences) into
+`ValueNotifier` objects.
+
+This fits well into the paradigm of data models. Models make data readily available to widgets.
+
 
 ## Why turn preferences into objects?
 
@@ -120,7 +123,6 @@ final b = PrefItem<double>(storage, "nameB");
 
 - `PrefsStorage` is an abstract base class describing a storage. A descendant should be able of reading and writing
 named values of types `int`, `double`, `String`, `StringList` and `DateTime`
-
 
 
 
