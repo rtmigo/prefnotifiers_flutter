@@ -9,7 +9,7 @@ Suppose, we have parameter, that can be read with [shared_preferences](https://p
 
 ```dart
 final prefs = await SharedPreferences.getInstance();
-var paramValue = await prefs.getInt("TheParameter");
+int paramValue = await prefs.getInt("TheParameter");
 ```
 
 There are two lines of problem:
@@ -25,7 +25,7 @@ The same code with `PrefItem` look like that:
 final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-Now we can remember that `theParameter` is the only representation of it in the whole program. We use
+We can use `theParameter` as the only representation of parameter in the whole program. We use
 `theParameter.value` to get and set the value, to build widgets and so on.
 
 
