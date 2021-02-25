@@ -144,9 +144,7 @@ void main() {
     expect(pi.value, 23); // значение изменилось сразу
   });
 
-  ///
-
-  test('PrefItem constuctor reading', () async {
+  test('PrefItem constructor reading', () async {
     final storage = RamPrefsStorage();
     storage.setInt("x", 23);
     final pi = PrefItem<int>(storage, "x");
@@ -155,7 +153,7 @@ void main() {
     expect(pi.value, 23);
   });
 
-  test('PrefItem constuctor initializing NULL', () async {
+  test('PrefItem constructor initializing NULL', () async {
     final storage = RamPrefsStorage();
     final pi = PrefItem<int>(storage, "x", initFunc: () => 42);
     expect(pi.value, null);
