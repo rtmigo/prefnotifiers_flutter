@@ -4,7 +4,7 @@
 
 set -e
 
-cd "$(dirname "$(perl -MCwd -e 'print Cwd::abs_path shift' "$0")")" # cd script parent
-cd ..
+# cd project root:
+cd "$(dirname "$(perl -MCwd -e 'print Cwd::abs_path shift' "$0")")"/..
 
 flutter test test
