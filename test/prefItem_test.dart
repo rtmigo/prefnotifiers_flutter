@@ -6,10 +6,8 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prefnotifiers/prefnotifiers.dart';
 
-void main()
-{
-  test('adjust simple', () async
-  {
+void main() {
+  test('adjust simple', () async {
     final storage = RamPrefsStorage();
 
     final pi = PrefItem<int>(storage, "pi");
@@ -18,15 +16,14 @@ void main()
     pi.write(0);
     expect(await pi.read(), 0);
 
-    expect(await pi.adjust((old) => old+1), 1);
+    expect(await pi.adjust((old) => old + 1), 1);
     expect(await pi.read(), 1);
 
-    expect(await pi.adjust((old) => old+1), 2);
+    expect(await pi.adjust((old) => old + 1), 2);
     expect(await pi.read(), 2);
   });
 
-  test('PrefItem write completers', () async
-  {
+  test('PrefItem write completers', () async {
     final storage = RamPrefsStorage();
 
     final pi = PrefItem<int>(storage, "pi");
@@ -47,31 +44,23 @@ void main()
     expect(await pi.read(), 9);
   });
 
-  test('PrefItem checking', () async
-  {
+  test('PrefItem checking', () async {
     final storage = RamPrefsStorage();
 
-    final pi = PrefItem<int>(
-        storage,
-        "pi",
-        checkValue:
-            (val) {
-          //print("checkValue $val");
-          if (val<0)
-            throw ArgumentError.value(val);
-        });
-
+    final pi = PrefItem<int>(storage, "pi", checkValue: (val) {
+      //print("checkValue $val");
+      if (val < 0) throw ArgumentError.value(val);
+    });
 
     await pi.write(0);
     await pi.write(1);
     await pi.write(2);
 
     expect(() async => await pi.write(-1), throwsArgumentError);
-    expect(() => pi.value=-2, throwsArgumentError);
+    expect(() => pi.value = -2, throwsArgumentError);
   });
 
-  test('PrefItem async reading by the constructor', () async
-  {
+  test('PrefItem async reading by the constructor', () async {
     final storage = RamPrefsStorage();
     await storage.setInt("x", 23);
 
@@ -87,16 +76,14 @@ void main()
     expect(a.value, 23);
   });
 
-
-
-
-  test('PrefItem.initialized when no value in storage', () async
-  {
+  test('PrefItem.initialized when no value in storage', () async {
     int notifications = 0;
     final storage = RamPrefsStorage();
 
     final pi = PrefItem<int>(storage, "unset");
-    pi.addListener(() { notifications++; });
+    pi.addListener(() {
+      notifications++;
+    });
 
     expect(pi.isInitialized, false);
     expect(pi.value, null);
@@ -121,17 +108,16 @@ void main()
     expect(pi.isInitialized, true);
   });
 
-  test('PrefItem writing value before reading', () async
-  {
-    testVal(initialVal) async
-    {
+  test('PrefItem writing value before reading', () async {
+    testVal(initialVal) async {
       int notifications = 0;
       final storage = RamPrefsStorage();
-      if (initialVal!=null)
-        storage.setInt("x", initialVal);
+      if (initialVal != null) storage.setInt("x", initialVal);
 
       final pi = PrefItem<int>(storage, "x");
-      pi.addListener(() {notifications++;});
+      pi.addListener(() {
+        notifications++;
+      });
       expect(pi.isInitialized, false);
       pi.value = 23;
       expect(pi.isInitialized, true);
@@ -148,9 +134,7 @@ void main()
     await testVal(13);
   });
 
-
-  test('PrefItem firstReadOrWrite', () async
-  {
+  test('PrefItem firstReadOrWrite', () async {
     final storage = RamPrefsStorage();
     final pi = PrefItem<int>(storage, "x");
     expect(pi.value, null);
@@ -162,8 +146,7 @@ void main()
 
   ///
 
-  test('PrefItem constuctor reading', () async
-  {
+  test('PrefItem constuctor reading', () async {
     final storage = RamPrefsStorage();
     storage.setInt("x", 23);
     final pi = PrefItem<int>(storage, "x");
@@ -172,25 +155,22 @@ void main()
     expect(pi.value, 23);
   });
 
-  test('PrefItem constuctor initializing NULL', () async
-  {
+  test('PrefItem constuctor initializing NULL', () async {
     final storage = RamPrefsStorage();
-    final pi = PrefItem<int>(storage, "x", initFunc: ()=>42);
+    final pi = PrefItem<int>(storage, "x", initFunc: () => 42);
     expect(pi.value, null);
     await pi.initialized;
     expect(pi.value, 42);
   });
 
-  test('PrefItem constructor NOT initializing', () async
-  {
+  test('PrefItem constructor NOT initializing', () async {
     // функция инициализации задана, но значение уже есть - и потому не должно измениться
 
     final storage = RamPrefsStorage();
     storage.setInt("x", 23);
-    final pi = PrefItem<int>(storage, "x", initFunc: ()=>42);
+    final pi = PrefItem<int>(storage, "x", initFunc: () => 42);
     expect(pi.value, null);
     await pi.initialized;
     expect(pi.value, 23);
   });
-
 }

@@ -6,10 +6,8 @@ import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prefnotifiers/prefnotifiers.dart';
 
-void main()
-{
-  test('RamPrefsStorage read-write', () async
-  {
+void main() {
+  test('RamPrefsStorage read-write', () async {
     final storage = RamPrefsStorage();
 
     final pi = PrefItem<String>(storage, "pi");
@@ -39,8 +37,7 @@ void main()
     expect(await pi.read(), null);
   });
 
-  test('RamPrefsStorage datetime', () async
-  {
+  test('RamPrefsStorage datetime', () async {
     final storage = RamPrefsStorage();
 
     final a = DateTime.now();
