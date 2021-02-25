@@ -12,7 +12,7 @@ final prefs = await SharedPreferences.getInstance();
 var currentValue = await prefs.getInt("TheParameter");
 ```
 
-There are two lines of problem.
+There are two lines of problem:
 
 - This code is asynchronous. We cannot use such code directly when building a widget.
 
