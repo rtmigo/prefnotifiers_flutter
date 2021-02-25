@@ -6,7 +6,7 @@ This library helps to wrap individual [shared_preferences](https://pub.dev/packa
 This fits well into the paradigm of data models. Models make data readily available to widgets.
 
 
-## Why turn preferences into objects?
+## Why?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
