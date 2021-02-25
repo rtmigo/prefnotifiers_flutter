@@ -39,7 +39,7 @@ It provides *"the best value we have for the moment"*. The actual read/write ope
 Let's declare the model for this parameter:
 
 ```dart
-final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
 Reading is is not finished yet. But we already can access `theParameter.value`. By default, it returns `null`.
@@ -47,10 +47,10 @@ We can use it in synchronous code:
 
 ```dart
 Widget build(BuildContext context) {
-    if (theParameter.value==null)
+    if (param.value==null)
         return Text("Not initialized yet");
     else
-        return Text("Value is ${theParameter.value}");
+        return Text("Value is ${param.value}");
 }
 ```
 
@@ -59,7 +59,7 @@ Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically r
 ```dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: theParameter,
+        valueListenable: param,
         builder: (BuildContext context, int value, Widget child) {
             if (value==null)
                 return Text("Not initialized yet");
