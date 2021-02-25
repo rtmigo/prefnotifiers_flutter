@@ -90,7 +90,7 @@ onTap: () {
 
 ## PrefsStorage
 
-Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.  Where and how the data is stored depends
+Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.  How the data is stored depends
 on which object is passed to the `PrefItem` constructor.
 
 ```dart
