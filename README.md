@@ -25,6 +25,8 @@ The same code with `PrefItem` look like that:
 final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
+We can use `theParameter.value` to get and set the value.
+
 
 ## PrefItem
 
