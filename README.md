@@ -20,7 +20,7 @@ There are two lines of problem:
 - This code is asynchronous. We cannot use such code directly when building a widget
 
 - The same data is now represented by two entities: the `paramValue` variable and
-the real storage. Which is conceptually not wise
+the real storage. There is a risk that after updating one thing, we will forget to update another and get out of sync
 
 We suggest using the new `PrefItem` class for the same task:
 
