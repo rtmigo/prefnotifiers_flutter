@@ -73,12 +73,12 @@ The code above will also rebuild the widget when value is changed. Let's change 
 
 ```dart
 onTap: () {
-    // myParameter.value is 3, shared prefs is 3
+    // param.value is 3, shared prefs is 3
 
-    myParameter.value += 1;
-    myParameter.value += 1;
+    param.value += 1;
+    param.value += 1;
 
-    // myParameter.value changed to 5.
+    // param.value changed to 5.
     // The widget will rebuild momentarily (i.e. on the next frame)
     //
     // Shared preferences still contain value 3. But asynchronous writing
