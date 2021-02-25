@@ -42,7 +42,7 @@ Let's declare the model for this parameter:
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-Reading is is not finished yet. But we already can access `theParameter.value`. By default, it returns `null`.
+Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
 ```dart
