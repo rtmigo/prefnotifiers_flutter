@@ -39,9 +39,13 @@ PrefItem serves as a **model** for an individual parameter stored in shared pref
 
 `PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
 
+### Create PrefItem
+
 ```dart
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
+
+### Read and use PrefItem value
 
 Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
 We can use it in synchronous code:
@@ -69,6 +73,8 @@ Widget build(BuildContext context) {
         });
 }
 ```
+
+### Set and write PrefItem value
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
