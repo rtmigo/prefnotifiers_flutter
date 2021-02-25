@@ -20,12 +20,6 @@ Second, the same data is now represented by two entities: the `currentValue` var
 the real storage. Which is conceptually not very wise.
 
 
-We can change the `currentValue`, but the storage
-will not be not affected.
-
-
-
-
 ## PrefItem
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences. Although I/O operations on
