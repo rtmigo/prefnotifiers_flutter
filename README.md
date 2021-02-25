@@ -6,7 +6,7 @@ This library helps to wrap individual [shared_preferences](https://pub.dev/packa
 This fits well into the paradigm of data models. Models make data readily available to widgets.
 
 
-## Why?
+## Why use PrefItem?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
@@ -33,7 +33,7 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
 - `param.addListener` makes it possible to track changes of the value
 
-## PrefItem
+## How to use PrefItem?
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
