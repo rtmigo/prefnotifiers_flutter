@@ -3,7 +3,7 @@
 This library makes it easy to use [shared_preferences](https://pub.dev/packages/shared_preferences) with
 state management libraries like [provider](https://pub.dev/packages/provider) or `ValueListenableBuilder` widgets.
 
-## The problem
+## Why turn preferences into objects?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
