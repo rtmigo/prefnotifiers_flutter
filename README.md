@@ -14,9 +14,9 @@ var currentValue = await prefs.getInt("TheParameter");
 
 There are two lines of problem.
 
-First, this code is asynchronous. We cannot use such code directly when building a widget.
+- This code is asynchronous. We cannot use such code directly when building a widget.
 
-Second, the same data is now represented by two entities: the `currentValue` variable and
+- The same data is now represented by two entities: the `currentValue` variable and
 the real storage. Which is conceptually not very wise.
 
 
