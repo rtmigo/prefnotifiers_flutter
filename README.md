@@ -22,7 +22,7 @@ There are two lines of problem:
 - The same data is now represented by two entities: the `paramValue` variable and
 the real storage. There is a risk that after updating one thing, we will forget to update another and get out of sync
 
-We suggest using the new `PrefItem` class for accessing "TheParameter":
+Instead, we suggest using the new `PrefItem` class for accessing "TheParameter":
 
 ```dart
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
