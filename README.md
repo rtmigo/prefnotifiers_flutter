@@ -19,6 +19,12 @@ There are two lines of problem:
 - The same data is now represented by two entities: the `currentValue` variable and
 the real storage. Which is conceptually not very wise.
 
+The same code with `PrefItem` look like that:
+
+```dart
+final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+```
+
 
 ## PrefItem
 
