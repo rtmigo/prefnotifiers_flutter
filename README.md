@@ -75,7 +75,7 @@ The code above will also rebuild the widget when value is changed. Let's change 
 
 ```dart
 onTap: () {
-    // param.value is 3, shared prefs is 3
+    // param.value is 3, shared preferences value is 3
 
     param.value += 1;
     param.value += 1;
