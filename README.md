@@ -36,7 +36,6 @@ shared preferences are asynchronous, the `PrefItem.value` is always available fo
 It provides *"the best value we have for the moment"*. The actual read/write operations happen in background.
 
 
-But l
 Let's declare the model for this parameter:
 
 ```dart
