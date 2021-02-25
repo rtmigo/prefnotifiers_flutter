@@ -17,7 +17,7 @@ There are two lines of problem:
 - This code is asynchronous. We cannot use such code directly when building a widget.
 
 - The same data is now represented by two entities: the `paramValue` variable and
-the real storage. Which is conceptually not very wise.
+the real storage. Which is conceptually not wise.
 
 This library suggests using `PrefItem` object for the same task:
 
