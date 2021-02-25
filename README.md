@@ -109,8 +109,8 @@ But usually the same instance of `PrefsStorage` shared between multiple `PrefIte
 
 final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
 
-final a =  PrefItem<String>(storage, "nameA");
-final b =  PrefItem<double>(storage, "nameB");
+final a = PrefItem<String>(storage, "nameA");
+final b = PrefItem<double>(storage, "nameB");
 
 ```
 
