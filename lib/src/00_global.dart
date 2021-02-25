@@ -2,8 +2,9 @@
 // Use of this source code is governed by a MIT license.
 // See LICENSE file for details
 
-/// Set ```prefnotifiersLog=null``` to mute logging.
-var prefnotifiersLog = (String txt) => print("prefnotifiers: $txt");
+/// Turns logging on/off
+bool prefnotifiersLog = true;
 
-/// Set ```prefnotifiersLogVerbose=null``` to mute verbose logging.
-var prefnotifiersLogVerbose = (String txt) => prefnotifiersLog?.call(txt);
+/// Turns verbose logging on/off
+bool prefnotifiersLogVerbose = true;
+

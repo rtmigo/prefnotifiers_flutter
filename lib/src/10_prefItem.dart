@@ -5,8 +5,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:prefnotifiers/src/00_global.dart';
 
+import '01_logging.dart';
 import '01_prefsStorage.dart';
 import '10_awaitableCalls.dart';
 
@@ -95,7 +95,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
     else
       throw FallThroughError();
 
-    prefnotifiersLog?.call("PrefItem: read $key, result=$t");
+    logInfo("PrefItem: read $key, result=$t");
 
     this.value = t;
 
@@ -169,7 +169,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
   {
     if (this.isDisposed) return;
 
-    prefnotifiersLog?.call("Writing $key=$value");
+    logInfo("Writing $key=$value");
 
     this._writeCalls.run(() async {
 
