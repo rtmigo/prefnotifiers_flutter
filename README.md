@@ -17,7 +17,10 @@ There are two lines of problem.
 First, this code is asynchronous. We cannot use such code directly when building a widget.
 
 Second, the same data is now represented by two entities: the `currentValue` variable and
-the real storage. Which is conceptually not very wise. We can change the `currentValue`, but the storage
+the real storage. Which is conceptually not very wise.
+
+
+We can change the `currentValue`, but the storage
 will not be not affected.
 
 
