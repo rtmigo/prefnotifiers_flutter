@@ -54,7 +54,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `theParameter` will be available:
+Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `param` will be available:
 
 ```dart
 Widget build(BuildContext context) {
