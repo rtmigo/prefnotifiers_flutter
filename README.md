@@ -22,11 +22,11 @@ the real storage. Which is conceptually not very wise.
 The same code with `PrefItem` look like that:
 
 ```dart
-final theParameter = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-We can use `theParameter` as the only representation of stored `"TheParameter"` in the whole program. We use
-`theParameter.value` to get and set the value, to build widgets and so on.
+We can use `param` as the only representation of stored `"TheParameter"` in the whole program. We use
+`param.value` to get and set the value, to build widgets and so on.
 
 
 ## PrefItem
