@@ -21,10 +21,9 @@
 // DEALINGS IN THE SOFTWARE.
 
 
+/// An abstract storage that reads and writes named values of certain types asynchronously.
 abstract class PrefsStorage
 {
-  // абстрактный класс, ссылку на который можно отдаваь алгоритмической части приложения
-
   Future<String> getString(String key);
   Future<bool> getBool(String key);
   Future<int> getInt(String key);
