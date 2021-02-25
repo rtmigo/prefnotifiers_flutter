@@ -9,14 +9,14 @@ Suppose, we have parameter, that can be read with [shared_preferences](https://p
 
 ```dart
 final prefs = await SharedPreferences.getInstance();
-var currentValue = await prefs.getInt("TheParameter");
+var paramValue = await prefs.getInt("TheParameter");
 ```
 
 There are two lines of problem:
 
 - This code is asynchronous. We cannot use such code directly when building a widget.
 
-- The same data is now represented by two entities: the `currentValue` variable and
+- The same data is now represented by two entities: the `paramValue` variable and
 the real storage. Which is conceptually not very wise.
 
 The same code with `PrefItem` look like that:
