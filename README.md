@@ -107,7 +107,7 @@ final keptInFile = PrefItem<String>(CustomJsonPrefsStorage(), ...);
 
 ```
 
-Normally same instance of `PrefsStorage` used by multiple `PrefItem` objects:
+Normally same instance of `PrefsStorage` is used by multiple `PrefItem` objects:
 
 ```dart
 
