@@ -106,7 +106,7 @@ But usually the same instance of `PrefsStorage` shared between multiple `PrefIte
 
 ```dart
 
-final storage = inTestingMode ? RamPrefsStorage() : SharedPrefsStorage();
+final storage = SharedPrefsStorage();
 
 final a = PrefItem<String>(storage, "nameA");
 final b = PrefItem<double>(storage, "nameB");
