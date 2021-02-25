@@ -26,7 +26,7 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
 We can use `param` object as the only representation of `"TheParameter"` in the whole program. We use
-`param.value` to get and set the value, to build widgets and so on.
+`param.value` to access its value, to build widgets and so on.
 
 
 ## PrefItem
