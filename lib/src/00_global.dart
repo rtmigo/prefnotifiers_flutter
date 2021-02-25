@@ -7,4 +7,3 @@ bool prefnotifiersLog = true;
 
 /// Turns verbose logging on/off
 bool prefnotifiersLogVerbose = true;
-

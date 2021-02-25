@@ -4,6 +4,7 @@
 
 library prefnotifiers;
 
+export 'src/00_global.dart';
 export 'src/01_prefsStorage.dart';
 export 'src/02_ramPrefsStorage.dart';
 export 'src/02_sharedPrefsStorage.dart';

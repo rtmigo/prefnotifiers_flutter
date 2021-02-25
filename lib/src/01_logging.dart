@@ -1,3 +1,7 @@
+// Copyright (c) 2021 Artёm Galkin.
+// Use of this source code is governed by a MIT license.
+// See LICENSE file for details
+
 import '00_global.dart';
 
 void logPrint(String txt) {
