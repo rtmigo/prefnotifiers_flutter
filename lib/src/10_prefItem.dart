@@ -24,19 +24,12 @@ typedef T AdjustFunc<T>(T old);
 /// For a newly created object the [value] always returns [null], since the data is not read yet.
 class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
 {
-  // значением по умолчанию всегда является NULL, причем я не различаю: это NULL помещенный в хранилище 
-  // или пустота в хранилище, интерпретированная как NULL
-  //
-  // Если я хочу использовать другое значение по умолчанию, можно написать:
-  //   prefItem.value ?? defaultValue
-  // или какой-нибудь объект вроде DefaultValueNotifier(prefItem).value
-
   PrefItem(
     this.storage,
     this.key,
     {
+      T initFunc(),
       @deprecated this.checkValue,
-      T initFunc()
     })
   {
     this._initCompleter = Completer<PrefItem<T>>();
@@ -47,6 +40,15 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
     else
       this.read();
   }
+
+  @override
+  void dispose() {
+    this._isDisposed = true;
+    super.dispose();
+  }
+
+  bool get isDisposed => _isDisposed;
+  bool _isDisposed = false;
 
   T _value;
   bool _valueInitialized = false;
@@ -64,15 +66,17 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
   Future<PrefItem<T>> get initialized => _initCompleteFuture;
   bool get isInitialized => _initCompleter.isCompleted;
 
-  /////////
-  
-  //final Future init
-
+  /// Reads the value from storage and changes [value] after that.
   Future<T> read() async
   {
-    // читает значение из хранилища, изменяет свойство value 
-    
+    if (this.isDisposed)
+      return null;
+
     await this._writeCalls.completed();
+
+    // we cannot change the value of disposed ValueNotifer
+    if (this.isDisposed)
+      return null;
 
     T t;
 
@@ -91,19 +95,24 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
     else
       throw FallThroughError();
 
-
     prefnotifiersLog?.call("PrefItem: read $key, result=$t");
 
     this.value = t;
+
     return t;
   }
 
   Future<T> _init(T initFunc()) async
   {
+    if (this.isDisposed) return null;
     //if (this.isInitialized)
       //throw StateError("");
 
     T t = await this.read();
+
+    if (this.isDisposed)
+      return null;
+
     if (t!=null)
       return t;
 
@@ -112,19 +121,32 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
       throw ArgumentError("Init returns NULL.");
     await this.write(t);
 
+    if (this.isDisposed)
+      return null;
+
     return this.read();
   }
 
   Future<bool> defined() async
   {
+    if (this.isDisposed) return null;
+
     return (await this.read())!=null;
   }
 
   Future<T> adjust(AdjustFunc f) async
   {
+    if (this.isDisposed) return null;
+
     var oldVal = await this.read();
+
+    if (this.isDisposed) return null;
+
     var newVal = f(oldVal);
     await this.write(newVal);
+
+    if (this.isDisposed) return null;
+
     return newVal;
   }
 
@@ -145,9 +167,13 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T>
 
   Future<void> _writeAsync(T value) async
   {
+    if (this.isDisposed) return;
+
     prefnotifiersLog?.call("Writing $key=$value");
 
     this._writeCalls.run(() async {
+
+      if (this.isDisposed) return;
 
       if (T == int)
         await storage.setInt(key, value as int);
