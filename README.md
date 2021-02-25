@@ -95,7 +95,7 @@ onTap: () {
 
 ## What is PrefsStorage?
 
-Each `PrefItem` relies on a `PrefsStorage` that actually stores the values.
+Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
 
 ```dart
 
