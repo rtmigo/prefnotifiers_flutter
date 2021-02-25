@@ -19,7 +19,7 @@ There are two lines of problem:
 - The same data is now represented by two entities: the `paramValue` variable and
 the real storage. Which is conceptually not wise.
 
-We suggest using new `PrefItem` object for the same task:
+We suggest using `PrefItem` object for the same task:
 
 ```dart
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
