@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # runs unit tests on the library
-# this comment is in DEV
+
 set -e
 
 # cd project root:
