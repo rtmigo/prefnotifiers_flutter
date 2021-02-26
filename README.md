@@ -1,3 +1,5 @@
+[![CI Actions Status](https://github.com/rtmigo/prefnotifiers.flutter/workflows/CI/badge.svg)](https://github.com/rtmigo/prefnotifiers.flutter/actions)
+
 [![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers) [![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
 
 This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
