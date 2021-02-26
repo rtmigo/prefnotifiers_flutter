@@ -99,11 +99,11 @@ Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
 
 ```dart
 
-final keptInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
+final itemInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
 
-final keptInRam = PrefItem<int>(RamPrefsStorage(), ...);
+final itemInRam = PrefItem<int>(RamPrefsStorage(), ...);
 
-final keptInFile = PrefItem<int>(CustomJsonPrefsStorage(), ...);
+final itemInFile = PrefItem<int>(CustomJsonPrefsStorage(), ...);
 
 ```
 
