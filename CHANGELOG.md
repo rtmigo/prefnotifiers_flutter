@@ -1,3 +1,7 @@
+## [0.0.4] - DATE
+
+* README updated
+
 ## [0.0.3] - 2021-02-26
 
 * Example added
