@@ -16,7 +16,7 @@ There are two lines of problem:
 
 - This code is asynchronous. We cannot use such code directly when building a widget
 
-- The `paramValue` does not reflect parameter changes
+- The `paramValue` does not reflect the parameter changes
 
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
