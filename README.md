@@ -101,9 +101,9 @@ Sometimes this is not a good idea: for example, we want to read all the preferen
 
 ```dart
 
-final itemWithValueRead = PrefItem<int>(SharedPrefsStorage(), "TheParameter").initialized;
+final ready = PrefItem<int>(SharedPrefsStorage(), "TheParameter").initialized;
 
-// now itemWithValueRead.value returns the value from the storage, not default NULL
+// now ready.value returns the value from the storage, not default NULL
 
 ```
 
