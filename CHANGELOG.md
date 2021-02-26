@@ -1,4 +1,4 @@
-# DRAFT
+# 0.0.5
 
 - Added GitHub action for CI unit testing
 - Added pubspec.yaml to the example dir
