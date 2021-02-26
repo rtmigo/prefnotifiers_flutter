@@ -2,9 +2,7 @@ This library represents [shared_preferences](https://pub.dev/packages/shared_pre
 
 It fits in well with the paradigm of data models. Models make data readily available to widgets.
 
-[![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
-[![Dart CI](https://github.com/rtmigo/prefnotifiers/workflows/Dart%20CI/badge.svg)](https://github.com/rtmigo/prefnotifiers/actions?query=workflow%3A%22Dart+CI%22)
-[![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers)
+[![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score) [![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers)
 
 ## Why use PrefItem?
 
