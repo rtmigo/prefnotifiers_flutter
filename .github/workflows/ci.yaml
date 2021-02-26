@@ -1,5 +1,6 @@
 # Based on:
 # https://dev.to/emilioschepis/adding-continuous-integration-to-a-flutter-project-with-github-actions-48p1
+# https://poetryincode.dev/testing-dart-packages-with-github-actions
 
 name: CI
 
@@ -8,14 +9,33 @@ on:
     branches: [ main ]
 
 jobs:
-  workflow:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: macos-latest
+
     steps:
       - uses: actions/checkout@v1
-            - name: Install Flutter
-            uses: subosito/flutter-action@v1.3.2
-            - name: Install app dependencies
-              run: flutter pub get
+      - name: Install Flutter
+        uses: subosito/flutter-action@v1.3.2
+      - name: Install app dependencies
+        run: flutter pub get
+      - name: Test app
+        run: flutter test --coverage
+      #- name: Upload coverage to Codecov
+      #  uses: codecov/codecov-action@v1
+      #  with:
+      #    token: ${{ secrets.CODECOV_TOKEN }}
+      #    file: coverage/lcov.info
+
+
+#jobs:
+#  workflow:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v1
+#            - name: Install Flutter
+#            uses: subosito/flutter-action@v1.3.2
+#            - name: Install app dependencies
+#              run: flutter pub get
 
       #- uses: actions/checkout@v2
       #- name: Download Flutter
