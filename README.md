@@ -35,6 +35,8 @@ PrefItem serves as a **model** for an individual parameter stored in shared pref
 
 `PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
 
+`PrefItem<int>` reads/writes an `int` value, `PrefItem<String>` reads/writes `String` and so on.
+
 ## How to use PrefItem?
 
 ### Create PrefItem
