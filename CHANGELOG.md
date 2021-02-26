@@ -1,6 +1,6 @@
-# 0.0.5
+# DRAFT
 
-- Added `pedantic` to dev dependencies
+- Added GitHub action for CI unit testing
 - Added pubspec.yaml to the example dir
 
 # 0.0.4
