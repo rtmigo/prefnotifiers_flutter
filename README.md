@@ -102,7 +102,7 @@ But what if we want to get actual data before doing anything else?
 
 final ready = await PrefItem<int>(SharedPrefsStorage(), "TheParameter").initialized;
 
-// We waited while the object read the data.
+// we waited while the object read the data.
 // Now ready.value returns the value from the storage, not default NULL.
 // Even if it is NULL, it is a NULL from the storage :)
 
