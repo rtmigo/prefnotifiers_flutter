@@ -96,7 +96,7 @@ onTap: () {
 ### Wait for PrefItem value
 
 For a newly created `PrefItem` the `value` returns `null` until the object reads the actual data from the storage.
-But what if we want to be sure the object is initialized before doing anything else?
+But what if we want to get actual data before doing anything else?
 
 ```dart
 
