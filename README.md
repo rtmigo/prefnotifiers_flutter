@@ -103,7 +103,8 @@ But what if we want to read some preferences before showing the app's start page
 final ready = await PrefItem<int>(SharedPrefsStorage(), "TheParameter").initialized;
 
 // We waited while the object read the data.
-// Now ready.value returns the value from the storage, not default NULL
+// Now ready.value returns the value from the storage, not default NULL.
+// Even if it is NULL, it is not the default NULL :)
 
 ```
 
