@@ -2,7 +2,7 @@
 # https://dev.to/emilioschepis/adding-continuous-integration-to-a-flutter-project-with-github-actions-48p1
 # https://poetryincode.dev/testing-dart-packages-with-github-actions
 
-name: ci-test
+name: ci test
 
 on:
   push:
