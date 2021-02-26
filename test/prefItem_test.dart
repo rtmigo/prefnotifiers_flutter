@@ -8,8 +8,6 @@ import 'package:prefnotifiers/prefnotifiers.dart';
 
 void main() {
 
-  throw Error(); // fail in dev branch
-
   test('adjust simple', () async {
     final storage = RamPrefsStorage();
 
