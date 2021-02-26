@@ -1,3 +1,7 @@
+# 0.0.6
+
+- Created master and dev GIT branches
+
 # 0.0.5
 
 - Added GitHub action for CI unit testing
