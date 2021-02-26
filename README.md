@@ -16,7 +16,7 @@ There are two lines of problem:
 
 - This code is asynchronous. We cannot use such code directly when building a widget
 
-- `paramValue` poorly models the stored preferences parameter. We can change `paramValue`, but the parameter will remain unchanged
+- `paramValue` poorly models the stored preferences parameter. If we change `paramValue`, the parameter will remain unchanged
 
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
