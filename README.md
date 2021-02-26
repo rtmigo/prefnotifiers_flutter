@@ -14,7 +14,7 @@ int paramValue = await prefs.getInt("TheParameter");
 
 There are two lines of problem:
 
-- This code is asynchronous. We cannot use such code directly when building a widget
+- this code is asynchronous. We cannot use such code directly when building a widget
 
 - `paramValue` does not reflect parameter changes
 
