@@ -1,5 +1,5 @@
 name: prefnotifiers
-description: Represents shared preferences as ValueNotifier objects
+description: Represents shared preferences as ValueNotifier objects. Reads and writes occur asynchronously in the background.
 version: 0.0.3
 homepage: https://github.com/rtmigo/prefnotifiers
 
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  shared_preferences: ^0.5.3+4
+  shared_preferences: ^0.5.12+4
 
 dev_dependencies:
   flutter_test:

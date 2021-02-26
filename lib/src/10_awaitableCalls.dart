@@ -21,36 +21,26 @@ import 'dart:async';
 ///   await writingCalls.completed();
 ///   await readFunc();
 /// ```
-class AwaitableCalls
-{
+class AwaitableCalls {
   List<Completer> _items = List<Completer>();
 
-  Future run(func) async
-  {
+  Future run(func) async {
     Completer c = Completer();
     this._items.add(c);
 
-    try
-    {
+    try {
       return await func();
-    }
-    catch (error, stack)
-    {
+    } catch (error, stack) {
       c.completeError(error, stack);
       c = null;
       rethrow;
-    }
-    finally
-    {
-      if (c!=null)
-        c.complete();
+    } finally {
+      if (c != null) c.complete();
       this._items.remove(c);
     }
   }
 
-  Future<void> completed() async
-  {
-    while (this._items.length>0)
-      await this._items[0].future;
+  Future<void> completed() async {
+    while (this._items.length > 0) await this._items[0].future;
   }
 }
