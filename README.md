@@ -104,7 +104,7 @@ final ready = await PrefItem<int>(SharedPrefsStorage(), "TheParameter").initiali
 
 // We waited while the object read the data.
 // Now ready.value returns the value from the storage, not default NULL.
-// Even if it is NULL, it is not the default NULL :)
+// Even if it is NULL, it means NULL in the storage :)
 
 ```
 
