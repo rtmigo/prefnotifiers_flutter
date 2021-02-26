@@ -99,9 +99,9 @@ Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
 
 final keptInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
 
-final keptInRam = PrefItem<String>(RamPrefsStorage(), ...);
+final keptInRam = PrefItem<int>(RamPrefsStorage(), ...);
 
-final keptInFile = PrefItem<String>(CustomJsonPrefsStorage(), ...);
+final keptInFile = PrefItem<int>(CustomJsonPrefsStorage(), ...);
 
 ```
 
