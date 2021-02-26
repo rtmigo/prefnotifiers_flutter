@@ -101,7 +101,7 @@ But what if we want to get actual data before doing anything else?
 ```dart
 
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
-await param.initialized
+await param.initialized;
 
 // we waited while the object was reading the data.
 // Now param.value returns the value from the storage, not default NULL.
