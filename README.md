@@ -95,7 +95,7 @@ onTap: () {
 
 ### Wait for PrefItem value
 
-By default, `PrefItem.value` returns `null` until it reads the actual value from the storage.
+For a newly created `PrefItem` the `value` returns `null` until it reads the actual value from the storage.
 
 Sometimes this is not a good idea: for example, we want to read all the preferences before showing the app's start page.
 
