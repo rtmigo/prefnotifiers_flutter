@@ -1,5 +1,4 @@
-This library helps to wrap individual [shared_preferences](https://pub.dev/packages/shared_preferences) into
-`ValueNotifier` objects.
+This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
 
 This fits well into the paradigm of data models. Models make data readily available to widgets.
 
