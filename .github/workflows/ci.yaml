@@ -16,9 +16,11 @@ jobs:
         run: |
           git clone https://github.com/flutter/flutter.git -b stable --depth 1
           echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
-      - name: Check Flutter
+      - name: Init Flutter
         run: |
           flutter --version
+          flutter doctor --android-licenses
+          echo "Flutter initialized"
 
 
       #    flutter --version
