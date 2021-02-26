@@ -33,7 +33,7 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
-`PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
+`PrefItem.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
 `PrefItem<int>` reads/writes an `int` value, `PrefItem<String>` reads/writes a `String` and so on.
 
