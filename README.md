@@ -2,7 +2,7 @@
 
 This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
 
-It fits in well with the paradigm of data models. Models make data readily available to widgets.
+It fits in well with the paradigm of data models. Models make data readily available to widgets. Reads and writes occur asynchronously in background.
 
 ## Why use PrefItem?
 
