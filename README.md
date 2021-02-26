@@ -2,6 +2,7 @@ This library represents [shared_preferences](https://pub.dev/packages/shared_pre
 
 It fits in well with the paradigm of data models. Models make data readily available to widgets.
 
+[![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers)
 
 ## Why use PrefItem?
 

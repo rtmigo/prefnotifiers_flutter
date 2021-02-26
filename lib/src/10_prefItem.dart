@@ -27,7 +27,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
     this.storage,
     this.key, {
     T initFunc(),
-    @deprecated this.checkValue,
+    this.checkValue,
   }) {
     this._initCompleter = Completer<PrefItem<T>>();
     this._initCompleteFuture = this._initCompleter.future;
@@ -78,7 +78,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
 
     await this._writeCalls.completed();
 
-    // we cannot change the value of disposed ValueNotifer
+    // we cannot change the value of disposed ValueNotifier
     if (this.isDisposed) return null;
 
     T t;
