@@ -1,5 +1,3 @@
-# prefnotifiers
-
 This library helps to wrap individual [shared_preferences](https://pub.dev/packages/shared_preferences) into
 `ValueNotifier` objects.
 
