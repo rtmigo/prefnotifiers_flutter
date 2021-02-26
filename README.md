@@ -29,11 +29,13 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
 - `param.addListener` makes it possible to track changes of the value
 
-## How to use PrefItem?
+## What is PrefItem?
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
 `PrefItem.value` provides *"the best value we have for the moment"*. The actual read/write operations happen asynchronously in background.
+
+## How to use PrefItem?
 
 ### Create PrefItem
 
