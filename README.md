@@ -16,8 +16,7 @@ There are two lines of problem:
 
 - This code is asynchronous. We cannot use such code directly when building a widget
 
-- The same data is now represented by two entities: the `paramValue` variable and
-the real storage. There is a risk that after updating one thing, we will forget to update another and get out of sync
+- `paramValue` poorly models the stored parameter. For example, we can change `paramValue`, but the parameter will remain unchanged
 
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
