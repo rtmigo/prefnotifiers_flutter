@@ -1,6 +1,6 @@
 name: prefnotifiers
 description: Represents shared preferences as ValueNotifier objects. Reads and writes occur asynchronously in background
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/rtmigo/prefnotifiers
 
 environment:
@@ -16,7 +16,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.9.0
 
 flutter:
 
   # nothing here :)
+
+include: package:pedantic/analysis_options.1.9.0.yaml
+analyzer:
+  exclude:
+    - flutter/** # Do not analyze the Flutter repository in the CI environment
+
+
+

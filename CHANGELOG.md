@@ -1,14 +1,19 @@
-## [0.0.4]
+# 0.0.5
 
-* README updated
-* Small fixes and improvements
+- Added `pedantic` to dev dependencies
+- Added pubspec.yaml to the example dir
 
-## [0.0.3]
+# 0.0.4
 
-* Example added
-* Code formatted with dartfmt
-* Dependencies updated
+- README updated
+- Small fixes and improvements
 
-## [0.0.2]
+# 0.0.3
 
-* It's not 0.0.1 anymore
+- Example added
+- Code formatted with dartfmt
+- Dependencies updated
+
+# 0.0.2
+
+- It's not 0.0.1 anymore
