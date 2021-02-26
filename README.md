@@ -1,4 +1,4 @@
-[![CI Actions Status](https://github.com/rtmigo/prefnotifiers.flutter/workflows/CI/badge.svg)](https://github.com/rtmigo/prefnotifiers.flutter/actions)
+[![unit-testing Actions Status](https://github.com/rtmigo/prefnotifiers.flutter/workflows/unit-testing/badge.svg)](https://github.com/rtmigo/prefnotifiers.flutter/actions)
 
 [![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers) [![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
 
