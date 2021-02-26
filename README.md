@@ -93,6 +93,20 @@ onTap: () {
 }
 ```
 
+### Wait for PrefItem value
+
+By default, `PrefItem.value` returns `null` until it reads the actual value from the storage.
+
+Sometimes this is not a good idea: for example, we want to read all the preferences before showing the app's start page.
+
+```dart
+
+final itemWithValueRead = PrefItem<int>(SharedPrefsStorage(), "TheParameter").initialized;
+
+// now itemWithValueRead.value returns the value from the storage, not default NULL
+
+```
+
 ## What is PrefsStorage?
 
 Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
