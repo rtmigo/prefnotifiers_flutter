@@ -1,3 +1,5 @@
+[![build](https://github.com/rtmigo/prefnotifiers/workflows/build/badge.svg?branch=main)](https://github.com/rtmigo/prefnotifiers/actions?query=branch%3Amain)
+
 [![Pub Package](https://img.shields.io/pub/v/prefnotifiers.svg)](https://pub.dev/packages/prefnotifiers) [![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
 
 This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
