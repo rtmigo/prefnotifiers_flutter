@@ -1,3 +1,7 @@
+# 0.0.7
+
+- Example simplified
+
 # 0.0.6
 
 - Created master and dev GIT branches

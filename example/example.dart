@@ -3,11 +3,8 @@ import 'package:prefnotifiers/prefnotifiers.dart';
 
 void main() => runApp(new MyApp());
 
-class Preferences {
-  // this int value will be stored permanently in shared preferences
-  static PrefItem<int> rememberMe =
-      PrefItem<int>(SharedPrefsStorage(), "buttonPushesCount");
-}
+// this int value will be stored permanently in shared preferences
+final pushesCount = PrefItem<int>(SharedPrefsStorage(), "buttonPushesCount");
 
 class MyApp extends StatelessWidget {
   @override
@@ -31,21 +28,22 @@ class MyHomePage extends StatelessWidget {
             // the following widget will be automatically rebuilt when PrefItem
             // finishes loading and/or when its PrefItem.value changes
             ValueListenableBuilder(
-                valueListenable: Preferences.rememberMe,
+                valueListenable: pushesCount,
                 builder: (context, value, child) {
-                  // PrefItem returns NULL:
-                  // - when a value with that name does not exist
-                  // - when it is not yet asynchronously read
-                  // Let's just be prepared for NULL
-                  final x = Preferences.rememberMe.value ?? 0;
+                  final x = pushesCount.value ?? 0; // will show null as 0
                   return Text(x.toString());
                 }),
           ],
         ),
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => Preferences.rememberMe.value =
-            (Preferences.rememberMe.value ?? 0) + 1,
+        onPressed: () async {
+          // make sure that loading completed
+          // (it is enough to do it once)
+          await pushesCount.initialized;
+          // update the value
+          pushesCount.value = (pushesCount.value ?? 0) + 1;
+        },
         tooltip: 'Increment and save',
         child: new Icon(Icons.add),
       ),
