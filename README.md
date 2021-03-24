@@ -63,7 +63,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `SharedPref` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `pref` will be available:
+Since `SharedPref` inherits from the `ValueNotifier`, we can automatically rebuild the widget when the `pref` will be available:
 
 ``` dart
 Widget build(BuildContext context) {
