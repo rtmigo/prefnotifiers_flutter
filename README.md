@@ -52,7 +52,8 @@ final pref = SharedPref<int>("TheParameter");
 ```
 
 :warning: If your code still doesn't support sound null safety, then you 
-have an older version of the library. No problem. Just create object like this:
+have an older version of the library. There is no `SharedPref` in the older 
+version. Just create object like this:
 
 ``` dart
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
