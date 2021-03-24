@@ -9,3 +9,4 @@ export 'src/01_prefsStorage.dart';
 export 'src/02_ramPrefsStorage.dart';
 export 'src/02_sharedPrefsStorage.dart';
 export 'src/10_prefItem.dart';
+export 'src/11_shared_pref_item.dart';
