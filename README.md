@@ -56,7 +56,7 @@ have an older version of the library (< 1.0.0). There is no `SharedPref` in the 
 versions. You have to create objects like this:
 
 ``` dart
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final pref = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
 ### Read SharedPref value
