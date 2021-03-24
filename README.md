@@ -2,6 +2,8 @@
 [![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
 [![Actions Status](https://github.com/rtmigo/prefnotifiers.flutter/workflows/ci%20test/badge.svg?branch=master)](https://github.com/rtmigo/prefnotifiers.flutter/actions)
 
+# prefnofitiers
+
 This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
 
 It fits in well with the paradigm of data models. Models make data readily available to widgets.
