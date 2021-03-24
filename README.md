@@ -124,3 +124,16 @@ await pref.initialized;
 
 ```
 
+## Change the value only through PrefNotifier
+
+The PrefNotifier object does not track changes in the underlying shared 
+preferences. It only caches values that were read by the PrefNotifier or passed 
+directly to the PrefNotifier.
+
+To avoid being out of sync, you should read and modify a specific 
+preference only through the ValueNotifier object.
+
+Do not create two objects for the same preference. This can also lead to out-of-sync.
+
+One preference - one object.
+
