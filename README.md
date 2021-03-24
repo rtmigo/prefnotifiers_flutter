@@ -51,7 +51,8 @@ final pref = SharedPref<int>("TheParameter");
 final pref = SharedPref<int>("TheParameter");
 ```
 
-:warning:
+:warning: If your code still doesn't support sound null safety, then you 
+have an older version of the library.
 
 ### Read SharedPref value
 
