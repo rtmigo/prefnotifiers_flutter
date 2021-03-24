@@ -1,3 +1,8 @@
+# 1.0.0
+
+- Migrated to sound null safety
+- Multiple minor improvements 
+
 # 0.0.7
 
 - Example simplified

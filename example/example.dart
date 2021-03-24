@@ -4,7 +4,7 @@ import 'package:prefnotifiers/prefnotifiers.dart';
 void main() => runApp(new MyApp());
 
 // this int value will be stored permanently in shared preferences
-final pushesCount = PrefItem<int>(SharedPrefsStorage(), "buttonPushesCount");
+final pushesCount = PrefItem<int>(SharedPrefsStorage(), 'buttonPushesCount');
 
 class MyApp extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("prefnotifiers demo")),
+      appBar: AppBar(title: Text('prefnotifiers demo')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

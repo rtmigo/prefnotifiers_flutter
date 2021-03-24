@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Artёm Galkin. All rights reserved.
+// Copyright (c) 2021 Artёm Galkin <github.com/rtmigo>. All rights reserved.
 // Use of this source code is governed by the BSD-3-Clause license found
 // in the LICENSE file in the root directory of this source tree
 
@@ -20,8 +20,8 @@ void main() {
 
 
   void tst<T>(T a, T b,
-      Future<T?> getFunc(SharedPrefsStorage rps, String key),
-      Future<void> setFunc(SharedPrefsStorage rps, String key, T? val)) {
+      Future<T?> Function(SharedPrefsStorage rps, String key) getFunc,
+      Future<void> Function(SharedPrefsStorage rps, String key, T? val) setFunc) {
     test(T.toString(), () async {
       final storage = SharedPrefsStorage();
       expect(await getFunc(storage, 'key'), null);
