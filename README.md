@@ -25,13 +25,13 @@ There are two lines of problem:
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
 ``` dart
-final param = SharedPref<int>("TheParameter");
+final pref = SharedPref<int>("TheParameter");
 ```
 
-- `param` object can be used as the only representation of `"TheParameter"` in the whole program
-- `param.value` allows indirectly read and write the shared preference value without getting out of sync
+- `pref` object can be used as the only representation of `"TheParameter"` in the whole program
+- `pref.value` allows indirectly read and write the shared preference value without getting out of sync
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
-- `param.addListener` makes it possible to track changes of the value
+- `pref.addListener` makes it possible to track changes of the value
 
 ## What is SharedPref?
 
@@ -46,29 +46,29 @@ final param = SharedPref<int>("TheParameter");
 ### Create SharedPref
 
 ```dart
-final param = SharedPref<int>("TheParameter");
+final pref = SharedPref<int>("TheParameter");
 ```
 
 ### Read SharedPref value
 
-Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
+Reading is is not finished yet. But we already can access `pref.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
 ``` dart
 Widget build(BuildContext context) {
-    if (param.value==null)
+    if (pref.value==null)
         return Text("Not initialized yet");
     else
-        return Text("Value is ${param.value}");
+        return Text("Value is ${pref.value}");
 }
 ```
 
-Since `SharedPref` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `param` will be available:
+Since `SharedPref` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `pref` will be available:
 
 ``` dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: param,
+        valueListenable: pref,
         builder: (BuildContext context, int value, Widget child) {
             if (value==null)
                 return Text("Not initialized yet");
@@ -86,8 +86,8 @@ The code above will also rebuild the widget when value is changed. Let's change 
 onTap: () {
     // param.value is 3, shared preferences value is 3
 
-    param.value += 1;
-    param.value += 1;
+    pref.value += 1;
+    pref.value += 1;
 
     // param.value changed to 5.
     // The widget will rebuild momentarily (i.e. on the next frame)
@@ -104,11 +104,11 @@ But what if we want to get actual data before doing anything else?
 
 ``` dart
 
-final param = SharedPref<int>("TheParameter");
-await param.initialized;
+final pref = SharedPref<int>("TheParameter");
+await pref.initialized;
 
 // we waited while the object was reading the data.
-// Now param.value returns the value from the storage, not default NULL.
+// Now pref.value returns the value from the storage, not default NULL.
 // Even if it is NULL, it is a NULL from the storage :)
 
 ```
