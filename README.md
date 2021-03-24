@@ -47,12 +47,16 @@ final pref = SharedPref<int>("TheParameter");
 
 ### Create SharedPref
 
-```dart
+``` dart
 final pref = SharedPref<int>("TheParameter");
 ```
 
 :warning: If your code still doesn't support sound null safety, then you 
-have an older version of the library.
+have an older version of the library. No problem. Just create object like this:
+
+``` dart
+final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+```
 
 ### Read SharedPref value
 
