@@ -4,7 +4,7 @@ import 'package:prefnotifiers/prefnotifiers.dart';
 void main() => runApp(new MyApp());
 
 // this int value will be stored permanently in shared preferences
-final pushesCountPref = SharedPref<int>('buttonPushesCount');
+final pushesCountPref = PrefNotifier<int>('buttonPushesCount');
 
 class MyApp extends StatelessWidget {
   @override
@@ -27,8 +27,8 @@ class MyHomePage extends StatelessWidget {
             Text('You have pushed the button this many times:'),
 
             // SHOWING THE VALUE
-            // the following widget will be automatically rebuilt when SharedPref
-            // finishes loading and/or when its SharedPref.value changes
+            // the following widget will be automatically rebuilt when PrefNotifier
+            // finishes loading and/or when its PrefNotifier.value changes
             ValueListenableBuilder(
                 valueListenable: pushesCountPref,
                 builder: (context, value, child) =>
@@ -51,7 +51,7 @@ class MyHomePage extends StatelessWidget {
                   // the SharedPreferences has also begun.
                   //
                   // By the way, awaiting for pushesCountPref.initialized
-                  // was optional. SharedPref didn't need it.
+                  // was optional. PrefNotifier didn't need it.
                   //
                   // But our program could calculate the wrong new value,
                   // taking null for 0, when it just meant "not loaded yet".

@@ -16,7 +16,7 @@ void main() {
   });
 
   test('get set', () async {
-    final a = SharedPref<int>('keyA');
+    final a = PrefNotifier<int>('keyA');
 
     expect(a.value, null);
     a.value = 5;
@@ -25,7 +25,7 @@ void main() {
   });
 
   test('read write', () async {
-    final a = SharedPref<String>('keyA');
+    final a = PrefNotifier<String>('keyA');
 
     await a.initialized;
 

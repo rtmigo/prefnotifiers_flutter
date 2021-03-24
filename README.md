@@ -10,7 +10,7 @@ It fits in well with the paradigm of data models. Models make data readily avail
 
 Reads and writes occur asynchronously in background.
 
-## Why use SharedPref?
+## Why use PrefNotifier?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
@@ -35,31 +35,31 @@ final pref = PrefNotifier<int>("TheParameter");
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
 - `pref.addListener` makes it possible to track changes of the value
 
-## What is SharedPref?
+## What is PrefNotifier?
 
-`SharedPref` serves as a **model** for an individual parameter stored in shared preferences.
+`PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
-`SharedPref.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
+`PrefNotifier.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-`SharedPref<int>` reads/writes an `int` value, `SharedPref<String>` reads/writes a `String` and so on.
+`PrefNotifier<int>` reads/writes an `int` value, `PrefNotifier<String>` reads/writes a `String` and so on.
 
-## How to use SharedPref?
+## How to use PrefNotifier?
 
-### Create SharedPref
+### Create PrefNotifier
 
 ``` dart
-final pref = SharedPref<int>("TheParameter");
+final pref = PrefNotifier<int>("TheParameter");
 ```
 
 :warning: If your code still doesn't support sound null safety, then you probably
-have an older version of the library (< 1.0.0). There is no `SharedPref` in the older 
+have an older version of the library (< 1.0.0). There is no `PrefNotifier` in the older 
 versions. You have to create objects like this:
 
 ``` dart
 final pref = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
-### Read SharedPref value
+### Read PrefNotifier value
 
 Reading is is not finished yet. But we already can access `pref.value`. By default, it returns `null`.
 We can use it in synchronous code:
@@ -73,7 +73,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `SharedPref` inherits from the `ValueNotifier`, we can automatically 
+Since `PrefNotifier` inherits from the `ValueNotifier`, we can automatically 
 rebuild the widget when the new value of `pref` will be available:
 
 ``` dart
@@ -89,7 +89,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Write SharedPref value
+### Write PrefNotifier value
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
@@ -108,14 +108,14 @@ onTap: () {
 }
 ```
 
-### Wait for SharedPref value
+### Wait for PrefNotifier value
 
-For a newly created `SharedPref` the `value` returns `null` until the object reads the actual data from the storage.
+For a newly created `PrefNotifier` the `value` returns `null` until the object reads the actual data from the storage.
 But what if we want to get actual data before doing anything else?
 
 ``` dart
 
-final pref = SharedPref<int>("TheParameter");
+final pref = PrefNotifier<int>("TheParameter");
 await pref.initialized;
 
 // we waited while the object was reading the data.

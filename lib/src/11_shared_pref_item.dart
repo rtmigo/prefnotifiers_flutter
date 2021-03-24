@@ -1,7 +1,7 @@
 import 'package:prefnotifiers/prefnotifiers.dart';
 
-class SharedPref<T> extends PrefItem<T> {
-  SharedPref(String key, {
+class PrefNotifier<T> extends PrefItem<T> {
+  PrefNotifier(String key, {
     T Function()? initFunc,
     checkValue,
   }): super(_commonStorage, key, initFunc: initFunc, checkValue: checkValue);
