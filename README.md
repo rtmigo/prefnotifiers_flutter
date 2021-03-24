@@ -10,7 +10,7 @@ It fits in well with the paradigm of data models. Models make data readily avail
 
 Reads and writes occur asynchronously in background.
 
-## Why use PrefItem?
+## Why use SharedPref?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
@@ -27,7 +27,7 @@ There are two lines of problem:
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
 ``` dart
-final pref = SharedPref<int>("TheParameter");
+final pref = PrefNotifier<int>("TheParameter");
 ```
 
 - `pref` object can be used as the only representation of `"TheParameter"` in the whole program
