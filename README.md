@@ -35,11 +35,11 @@ final param = SharedPref<int>("TheParameter");
 
 ## What is SharedPref?
 
-PrefItem serves as a **model** for an individual parameter stored in shared preferences.
+`SharedPref` serves as a **model** for an individual parameter stored in shared preferences.
 
-`PrefItem.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
+`SharedPref.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-`PrefItem<int>` reads/writes an `int` value, `SharedPref<String>` reads/writes a `String` and so on.
+`SharedPref<int>` reads/writes an `int` value, `SharedPref<String>` reads/writes a `String` and so on.
 
 ## How to use SharedPref?
 
@@ -49,7 +49,7 @@ PrefItem serves as a **model** for an individual parameter stored in shared pref
 final param = SharedPref<int>("TheParameter");
 ```
 
-### Read PrefItem value
+### Read SharedPref value
 
 Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
 We can use it in synchronous code:
@@ -99,12 +99,12 @@ onTap: () {
 
 ### Wait for PrefItem value
 
-For a newly created `PrefItem` the `value` returns `null` until the object reads the actual data from the storage.
+For a newly created `SharedPref` the `value` returns `null` until the object reads the actual data from the storage.
 But what if we want to get actual data before doing anything else?
 
 ``` dart
 
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final param = SharedPref<int>("TheParameter");
 await param.initialized;
 
 // we waited while the object was reading the data.
