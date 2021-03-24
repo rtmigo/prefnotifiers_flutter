@@ -12,7 +12,7 @@ Reads and writes occur asynchronously in background.
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
-```dart
+``` dart
 final prefs = await SharedPreferences.getInstance();
 int paramValue = await prefs.getInt("TheParameter");
 ```
@@ -24,8 +24,8 @@ There are two lines of problem:
 
 Instead, we suggest using the new `PrefItem` class for accessing the parameter:
 
-```dart
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+``` dart
+final param = SharedPref<int>("TheParameter");
 ```
 
 - `param` object can be used as the only representation of `"TheParameter"` in the whole program
@@ -33,20 +33,20 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
 - `param.addListener` makes it possible to track changes of the value
 
-## What is PrefItem?
+## What is SharedPref?
 
 PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
 `PrefItem.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-`PrefItem<int>` reads/writes an `int` value, `PrefItem<String>` reads/writes a `String` and so on.
+`PrefItem<int>` reads/writes an `int` value, `SharedPref<String>` reads/writes a `String` and so on.
 
-## How to use PrefItem?
+## How to use SharedPref?
 
-### Create PrefItem
+### Create SharedPref
 
 ```dart
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final param = SharedPref<int>("TheParameter");
 ```
 
 ### Read PrefItem value
@@ -54,7 +54,7 @@ final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
-```dart
+``` dart
 Widget build(BuildContext context) {
     if (param.value==null)
         return Text("Not initialized yet");
@@ -63,9 +63,9 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `param` will be available:
+Since `SharedPref` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `param` will be available:
 
-```dart
+``` dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: param,
@@ -82,7 +82,7 @@ Widget build(BuildContext context) {
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
-```dart
+``` dart
 onTap: () {
     // param.value is 3, shared preferences value is 3
 
@@ -102,7 +102,7 @@ onTap: () {
 For a newly created `PrefItem` the `value` returns `null` until the object reads the actual data from the storage.
 But what if we want to get actual data before doing anything else?
 
-```dart
+``` dart
 
 final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 await param.initialized;
@@ -117,7 +117,7 @@ await param.initialized;
 
 Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
 
-```dart
+``` dart
 
 final itemInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
 
