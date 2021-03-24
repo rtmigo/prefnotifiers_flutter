@@ -13,8 +13,8 @@ import '10_awaitableCalls.dart';
 //class PrefItemNotFoundError implements Exception {} // outdated?
 //class PrefItemNotInitializedError implements Exception {}  // outdated?
 
-typedef CheckValueFunc<T>(T val);
-typedef T AdjustFunc<T>(T old);
+typedef CheckValueFunc<T> = Function(T val);
+typedef AdjustFunc<T> = T Function(T old);
 
 /// Represents a particular named value in a [PrefsStorage].
 ///
@@ -22,20 +22,22 @@ typedef T AdjustFunc<T>(T old);
 /// is done asynchronously in background.
 ///
 /// For a newly created object the [value] always returns [null], since the data is not read yet.
-class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
+class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
   PrefItem(
     this.storage,
     this.key, {
-    T initFunc(),
+    T Function()? initFunc,
     this.checkValue,
   }) {
     this._initCompleter = Completer<PrefItem<T>>();
     this._initCompleteFuture = this._initCompleter.future;
 
-    if (initFunc != null)
+    if (initFunc != null) {
       this._init(initFunc);
-    else
+    }
+    else {
       this.read();
+    }
   }
 
   @override
@@ -48,7 +50,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
   bool get isDisposed => _isDisposed;
   bool _isDisposed = false;
 
-  T _value;
+  T? _value;
   bool _valueInitialized = false;
 
   /// The current item key (or name, or id - depending on the storage).
@@ -60,20 +62,20 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
   /// An optional callback that will be called before changing the [value] or saving a new value to the storage.
   ///
   /// If the value is invalid, the callback can throw an exception.
-  final CheckValueFunc<T> checkValue;
+  final CheckValueFunc<T?>? checkValue;
 
   ////////
   // firstReadOrWrite позволяет дождаться загрузки интересующего значения
 
-  Completer<PrefItem<T>> _initCompleter;
-  Future<PrefItem<T>> _initCompleteFuture;
+  late Completer<PrefItem<T>> _initCompleter;
+  late Future<PrefItem<T>> _initCompleteFuture;
 
   /// Future completes when the object initialization completes. That means we have read value or NULL from the storage.
   Future<PrefItem<T>> get initialized => _initCompleteFuture;
   bool get isInitialized => _initCompleter.isCompleted;
 
   /// Reads and returns the data from storage. [value] property will also be updated.
-  Future<T> read() async {
+  Future<T?> read() async {
     if (this.isDisposed) return null;
 
     await this._writeCalls.completed();
@@ -81,43 +83,52 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
     // we cannot change the value of disposed ValueNotifier
     if (this.isDisposed) return null;
 
-    T t;
+    T? t;
 
-    if (T == int)
-      t = await storage.getInt(key) as T;
-    else if (T == String)
-      t = (await storage.getString(key)) as T;
-    else if (T == double)
-      t = await storage.getDouble(key) as T;
-    else if (T == bool)
-      t = await storage.getBool(key) as T;
-    else if (T == List)
-      t = await storage.getStringList(key) as T;
-    else if (T == DateTime)
-      t = await storage.getDateTime(key) as T;
-    else
+    if (T == int) {
+      t = await storage.getInt(key) as T?;
+    }
+    else if (T == String) {
+      dynamic val = await storage.getString(key);
+      print('Got val $val');
+      t = (await storage.getString(key)) as T?;
+    }
+    else if (T == double) {
+      t = await storage.getDouble(key) as T?;
+    }
+    else if (T == bool) {
+      t = await storage.getBool(key) as T?;
+    }
+    else if (T == List) {
+      t = await storage.getStringList(key) as T?;
+    }
+    else if (T == DateTime) {
+      t = await storage.getDateTime(key) as T?;
+    }
+    else {
       throw FallThroughError();
+    }
 
-    logInfo("PrefItem: read $key, result=$t");
+    logInfo('PrefItem: read $key, result=$t');
 
     this.value = t;
 
     return t;
   }
 
-  Future<T> _init(T initFunc()) async {
+  Future<T?> _init(T Function() initFunc) async {
     if (this.isDisposed) return null;
     //if (this.isInitialized)
     //throw StateError("");
 
-    T t = await this.read();
+    T? t = await this.read();
 
     if (this.isDisposed) return null;
 
     if (t != null) return t;
 
     t = initFunc();
-    if (t == null) throw ArgumentError("Init returns NULL.");
+    if (t == null) throw ArgumentError('Init returns NULL.');
     await this.write(t);
 
     if (this.isDisposed) return null;
@@ -127,13 +138,13 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
 
   /// Returns TRUE if we have the value in storage, otherwise FALSE.
   Future<bool> defined() async {
-    if (this.isDisposed) return null;
+    if (this.isDisposed) return false;//null;
 
     return (await this.read()) != null;
   }
 
   /// Reads an existing value, computes a new one with [AdjustFunc] and writes the new value to the storage.
-  Future<T> adjust(AdjustFunc f) async {
+  Future<T?> adjust(AdjustFunc f) async {
     if (this.isDisposed) return null;
 
     var oldVal = await this.read();
@@ -148,11 +159,12 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
     return newVal;
   }
 
-  Future<void> write(T value) {
+  Future<void> write(T? value) {
     // значение value обновляем синхронно, а пишем после этого асинхронно.
     // Т.е. сразу после вызова у нас появится обновленное value, но сохранится оно с задержкой.
 
-    if (this.checkValue != null) this.checkValue(value);
+    this.checkValue?.call(value);
+
     this.value = value;
 
     return this._writeAsync(value);
@@ -161,35 +173,43 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
   // этот объект позволит дождаться окончания всех процедур записи, прежде чем значение будет прочитано
   final _writeCalls = AwaitableCalls();
 
-  Future<void> _writeAsync(T value) async {
-    if (this.isDisposed) return;
+  Future<void> _writeAsync(T? value) async {
+    if (this.isDisposed) { return; }
 
-    logInfo("Writing $key=$value");
+    logInfo('Writing $key=$value');
 
-    this._writeCalls.run(() async {
-      if (this.isDisposed) return;
+    await this._writeCalls.run(() async {
+      if (this.isDisposed) { return; }
 
-      if (T == int)
-        await storage.setInt(key, value as int);
-      else if (T == String)
-        await storage.setString(key, value as String);
-      else if (T == double)
-        await storage.setDouble(key, value as double);
-      else if (T == bool)
-        await storage.setBool(key, value as bool);
-      else if (T == DateTime)
-        await storage.setDateTime(key, value as DateTime);
-      else if (T == List)
-        await storage.setStringList(key, value as List<String>);
-      else
+      if (T == int) {
+        await storage.setInt(key, value == null ? null : value as int);
+      }
+      else if (T == String) {
+        await storage.setString(key, value == null ? null : value as String);
+      }
+      else if (T == double) {
+        await storage.setDouble(key, value==null ? null : value as double);
+      }
+      else if (T == bool) {
+        await storage.setBool(key, value == null ? null : value as bool);
+      }
+      else if (T == DateTime) {
+        await storage.setDateTime(key, value == null ? null : value as DateTime);
+      }
+      else if (T == List) {
+        await storage.setStringList(key, value == null ? null : value as List<String>);
+      }
+      else {
         throw FallThroughError();
+      }
     });
   }
 
-  set value(T newValue) {
+  @override
+  set value(T? newValue) {
     if (this._valueInitialized && newValue == this._value) return;
 
-    if (this.checkValue != null) this.checkValue(newValue);
+    this.checkValue?.call(newValue);
 
     this._value = newValue;
     this._valueInitialized = true;
@@ -201,7 +221,8 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
     this._writeAsync(newValue);
   }
 
-  T get value {
+  @override
+  T? get value {
     if (!this._valueInitialized) return null;
     return this._value;
   }
@@ -210,7 +231,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T> {
   ///
   /// ```final pi=PrefItem<int>(storage, key);
   /// final x = await pi.initializedValue;```
-  Future<T> get initializedValue =>
+  Future<T?> get initializedValue =>
       this.initialized.then((prefitem) => prefitem.value);
 
   void toWaitList(List<Future> list) {

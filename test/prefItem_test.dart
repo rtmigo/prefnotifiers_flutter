@@ -50,7 +50,7 @@ void main() {
 
     final pi = PrefItem<int>(storage, "pi", checkValue: (val) {
       //print("checkValue $val");
-      if (val < 0) throw ArgumentError.value(val);
+      if (val! < 0) throw ArgumentError.value(val);
     });
 
     await pi.write(0);

@@ -5,7 +5,7 @@
 import '00_global.dart';
 
 void logPrint(String txt) {
-  print("prefnotifiers: $txt");
+  print('prefnotifiers: $txt');
 }
 
 void logInfo(String txt) {

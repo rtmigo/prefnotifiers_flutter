@@ -36,21 +36,4 @@ void main() {
     //expect(() async => await pi.read(), throwsA(isA<PrefItemNotFoundError>()));
     expect(await pi.read(), null);
   });
-
-  test('RamPrefsStorage datetime', () async {
-    final storage = RamPrefsStorage();
-
-    final a = DateTime.now();
-    await storage.setDateTime("a", a);
-    expect((await storage.getDateTime("a")).isAtSameMomentAs(a), isTrue);
-
-    final b = DateTime.now().toUtc();
-    await storage.setDateTime("b", b);
-    expect((await storage.getDateTime("b")).isAtSameMomentAs(b), isTrue);
-    expect((await storage.getDateTime("b")).isAtSameMomentAs(a), isFalse);
-
-    //final b = DateTime.now().toUtc();
-    await storage.setDateTime("b", null);
-    expect(await storage.getDateTime("b"), isNull);
-  });
 }

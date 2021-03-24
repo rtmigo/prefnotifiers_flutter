@@ -4,7 +4,8 @@
 
 import 'dart:async';
 
-/// Controls the asynchronous read and write process so that reads occur only after all writes have completed.
+/// Controls the asynchronous read and write process so that reads occur
+/// only after all writes have completed.
 ///
 /// To create object:
 /// ```
@@ -22,10 +23,10 @@ import 'dart:async';
 ///   await readFunc();
 /// ```
 class AwaitableCalls {
-  List<Completer> _items = List<Completer>();
+  final List<Completer> _items = <Completer>[];
 
   Future run(func) async {
-    Completer c = Completer();
+    Completer? c = Completer();
     this._items.add(c);
 
     try {
@@ -35,12 +36,16 @@ class AwaitableCalls {
       c = null;
       rethrow;
     } finally {
-      if (c != null) c.complete();
+      if (c != null) {
+        c.complete();
+      }
       this._items.remove(c);
     }
   }
 
   Future<void> completed() async {
-    while (this._items.length > 0) await this._items[0].future;
+    while (this._items.isNotEmpty) {
+      await this._items[0].future;
+    }
   }
 }
