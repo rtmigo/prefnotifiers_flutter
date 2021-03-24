@@ -78,7 +78,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Write PrefItem value
+### Write SharedPref value
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
@@ -97,7 +97,7 @@ onTap: () {
 }
 ```
 
-### Wait for PrefItem value
+### Wait for SharedPref value
 
 For a newly created `SharedPref` the `value` returns `null` until the object reads the actual data from the storage.
 But what if we want to get actual data before doing anything else?
