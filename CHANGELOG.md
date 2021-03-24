@@ -1,6 +1,7 @@
 # 1.0.0
 
 - Migrated to sound null safety
+- Added SharedPref class as a shortcut to PrefItem(SharedPrefsStorage(), ...)
 - Multiple minor improvements 
 
 # 0.0.7
