@@ -10,6 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  prefnotifiers:
-    path: ../../prefnotifiers_flutter
+  prefnotifiers: any
+    #path: ../../prefnotifiers_flutter
 
