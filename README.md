@@ -131,7 +131,7 @@ preferences. It only caches values that were read by the PrefNotifier or passed
 directly to the PrefNotifier.
 
 To avoid being out of sync, you should read and modify a specific 
-preference only through the ValueNotifier object.
+preference only through the ValueNotifier.
 
 Do not create two objects for the same preference. This can also lead to out-of-sync.
 
