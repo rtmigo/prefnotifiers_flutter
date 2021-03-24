@@ -124,7 +124,7 @@ await pref.initialized;
 
 ```
 
-## Change the value only through PrefNotifier
+## Access the value only through PrefNotifier
 
 The PrefNotifier object does not track changes in the underlying shared 
 preferences. It only caches values that were read by the PrefNotifier or passed 
