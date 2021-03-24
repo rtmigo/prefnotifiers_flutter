@@ -51,6 +51,8 @@ final pref = SharedPref<int>("TheParameter");
 final pref = SharedPref<int>("TheParameter");
 ```
 
+:warning:
+
 ### Read SharedPref value
 
 Reading is is not finished yet. But we already can access `pref.value`. By default, it returns `null`.
