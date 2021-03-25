@@ -43,6 +43,7 @@ final myParam = PrefNotifier<int>("MyParameter");
 
 `PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
+## Types
 
 Type                         | Аlternative to SharedPreferences
 -----------------------------|---------------------------------------
@@ -54,10 +55,9 @@ Type                         | Аlternative to SharedPreferences
 
 ## PrefNotifier vs SharedPreferences
 
-Manipulating the same parameter:
-
-`myParam = PrefNotifier<int>('MyParameter')` | `prefs = await SharedPreferences.getInstance()`
+PrefNotifier | SharedPreferences
 --------------------------------|-----------------------------------------------
+`myParam = PrefNotifier<int>('MyParameter')` | `prefs = await SharedPreferences.getInstance()`
 `myParam.value = 42`              | `await prefs.setInt('MyParameter', 42)`
 `int? x = myParam.value`       | `int? x = await prefs.getInt('MyParameter')`
 `myParam.value = null`         | `await prefs.remove('MyParameter')`
