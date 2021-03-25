@@ -62,7 +62,7 @@ Manipulating the same parameter:
 `int? x = myParam.value`       | `int? x = await prefs.getInt('MyParameter')`
 `myParam.value = null`         | `await prefs.remove('MyParameter')`
 
-But the most great is
+But the most great is:
 
 ``` dart
 myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
