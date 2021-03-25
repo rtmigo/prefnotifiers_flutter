@@ -85,7 +85,7 @@ In newer version of the library `PrefItem` works as well. `PrefNotifier` is an e
 </details>
 
 
-### Read value
+### Read 
 
 Reading is is not finished yet. But we already can access `myParam.value`. By default, it returns `null`.
 We can use it in synchronous code:
@@ -115,7 +115,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-## Write value
+## Write 
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
@@ -134,9 +134,12 @@ onTap: () {
 }
 ```
 
-## Wait for value
+## Load
 
-For a newly created `PrefNotifier` the `value` returns `null` until the object reads the actual data from the storage.
+For a newly created `PrefNotifier` the `value` returns `null` until the object 
+reads the actual data from the storage. Asynchronous **loading starts 
+automatically when the object is created**.
+ 
 But what if we want to get actual data before doing anything else?
 
 ``` dart
