@@ -78,7 +78,7 @@ final myParam = PrefNotifier<int>("MyParameter");
 final myParam = PrefItem<int>(SharedPrefsStorage(), "MyParameter");
 ```
 
-In newer version `PrefItem` works as well. `PrefNotifier` is an easier to use alias.   
+In newer version of the library `PrefItem` works as well. `PrefNotifier` is an easier to use alias.   
 
 </details>
 
