@@ -60,7 +60,7 @@ Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 But the most great is
 
 ``` dart
-myParam.addListener(()=>print('Value changed!');
+myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 ```
 
 ## How to use PrefNotifier?
