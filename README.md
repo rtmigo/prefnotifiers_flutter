@@ -16,7 +16,7 @@ Suppose, we have parameter, that can be read with [shared_preferences](https://p
 
 ``` dart
 final prefs = await SharedPreferences.getInstance();
-int paramValue = await prefs.getInt("TheParameter");
+int myParamValue = await prefs.getInt("MyParameter");
 ```
 
 There are two lines of problem:
@@ -27,13 +27,13 @@ There are two lines of problem:
 Instead, we suggest using the new `PrefNotifier` class for accessing the parameter:
 
 ``` dart
-final pref = PrefNotifier<int>("TheParameter");
+final myParam = PrefNotifier<int>("MyParameter");
 ```
 
-- `pref` object can be used as the only representation of `"TheParameter"` in the whole program
-- `pref.value` allows indirectly read and write the shared preference value without getting out of sync
+- `myParam` object can be used as the only representation of `"MyParameter"` in the whole program
+- `myParam.value` allows indirectly read and write the shared preference value without getting out of sync
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
-- `pref.addListener` makes it possible to track changes of the value
+- `myParam.addListener` makes it possible to track changes of the value
 
 ## What is PrefNotifier?
 
