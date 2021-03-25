@@ -102,7 +102,7 @@ Widget build(BuildContext context) {
 }
 ```
 
-Since `PrefNotifier` inherits from the `ValueNotifier`, we can automatically 
+Since `PrefNotifier` inherits from the `ValueListenable`, we can automatically 
 rebuild the widget when the new value of `myParam` will be available:
 
 ``` dart
