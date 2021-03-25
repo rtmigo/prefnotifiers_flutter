@@ -127,9 +127,7 @@ onTap: () {
     myParam.value += 1;
 
     // param.value is already changed to 5.
-    
-    assert( myParam.value == 5 );
-
+    //
     // The widget will rebuild momentarily (i.e. on the next frame)
     //
     // Shared preferences still contain value 3. But asynchronous writing
