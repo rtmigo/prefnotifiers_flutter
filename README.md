@@ -175,3 +175,13 @@ otherNotifier = 20;
 // now the myParam.value is still 5.
 // And the myParam has no idea it is changed
 ```
+
+## Test
+
+To test a program that uses PrefNotifiers, you can populate SharedPreferences 
+the same way, as in the case of using SharedPreferences directly 
+
+``` dart 
+SharedPreferences.setMockInitialValues (Map<String, dynamic> values);
+```
+
