@@ -26,37 +26,6 @@ class PrefNotifier<T> extends PrefItem<T> {
   static SharedPrefsStorage? _commonStorageVal;
   static SharedPrefsStorage get _commonStorage {
     return _commonStorageVal ??= SharedPrefsStorage();
-    //return _commonStorageVal;
   }
-  //
-  // factory PrefNotifier(String key) {
-  //
-  //   PrefNotifier<dynamic>? dynamicNotifier = _instances[key];
-  //   if (dynamicNotifier!=null) {
-  //     try {
-  //       return dynamicNotifier as PrefNotifier<T>;
-  //     }
-  //     catch (_) {
-  //       throw PrefNotifierTypeError(key, dynamicNotifier.runtimeType, T);
-  //     }
-  //   }
-  //
-  //   PrefNotifier<T> newNotifier = PrefNotifier<T>._(key);
-  //   assert(_instances[key]==null);
-  //   _instances[key]=newNotifier;
-  //
-  //   assert(_instances[key]==newNotifier);
-  //   return newNotifier;
-  // }
-  //
-  // static final Map<String,PrefNotifier> _instances = <String,PrefNotifier>{};
-  //
-  // @visibleForTesting
-  // static void resetInstances() {
-  //   _instances.clear();
-  // }
 
-  //SingletonOne._privateConstructor();
-
-  //static final SingletonOne _instance = SingletonOne._privateConstructor();
 }
