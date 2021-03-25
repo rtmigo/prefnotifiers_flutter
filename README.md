@@ -51,11 +51,11 @@ Type                         | Replaces | And | And
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
-`myParam = PrefNotifier<int>('my-parameter')` | `prefs = await SharedPreferences.getInstance()`
+`myParam = PrefNotifier<int>('MyParameter')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`myParam.value = 42`              | `await prefs.setInt('my-parameter', 42)`
-`int? x = myParam.value`       | `int? x = await prefs.getInt('my-parameter')`
-`myParam.value = null`         | `await prefs.remove('my-parameter')`
+`myParam.value = 42`              | `await prefs.setInt('MyParameter', 42)`
+`int? x = myParam.value`       | `int? x = await prefs.getInt('MyParameter')`
+`myParam.value = null`         | `await prefs.remove('MyParameter')`
 
 But the most great is
 
@@ -68,7 +68,7 @@ myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 ### Create PrefNotifier
 
 ``` dart
-final myParam = PrefNotifier<int>("TheParameter");
+final myParam = PrefNotifier<int>("MyParameter");
 ```
 
 :warning: If your code still doesn't support sound null safety, then you probably
@@ -76,7 +76,7 @@ have an older version of the library (< 1.0.0). There is no `PrefNotifier` in th
 versions. You have to create objects like this:
 
 ``` dart
-final myParam = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final myParam = PrefItem<int>(SharedPrefsStorage(), "MyParameter");
 ```
 
 ### Read PrefNotifier value
@@ -151,13 +151,13 @@ parameter. Do not access this parameter in any other way than through that
 PrefNotifier instance.
 
 ``` dart
-final myParam = PrefNotifier<int>("TheParameter");
+final myParam = PrefNotifier<int>("MyParameter");
 myParam.value = 5;
 
 await (await SharedPreferences.getInstance())
-    .setInt("TheParameter", 10); // DON'T DO THIS
+    .setInt("MyParameter", 10); // DON'T DO THIS
 
-var otherNotifier = PrefNotifier<int>("TheParameter"); // DON'T DO THIS
+var otherNotifier = PrefNotifier<int>("MyParameter"); // DON'T DO THIS
 otherNotifier = 20;
 
 // now the theNotifier.value is still 5.
