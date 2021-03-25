@@ -51,11 +51,11 @@ Type                         | Replaces | And | And
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
-`myParam = PrefNotifier<int>('myparam')` | `prefs = await SharedPreferences.getInstance()`
+`myParam = PrefNotifier<int>('my-parameter')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`myParam.value = 42`              | `await prefs.setInt('myparam', 42)`
-`int? x = myParam.value`       | `int? x = await prefs.getInt('myparam')`
-`myParam.value = null`         | `await prefs.remove('myparam')`
+`myParam.value = 42`              | `await prefs.setInt('my-parameter', 42)`
+`int? x = myParam.value`       | `int? x = await prefs.getInt('my-parameter')`
+`myParam.value = null`         | `await prefs.remove('my-parameter')`
 
 But the most great is
 
@@ -68,7 +68,7 @@ myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 ### Create PrefNotifier
 
 ``` dart
-final pref = PrefNotifier<int>("TheParameter");
+final myParam = PrefNotifier<int>("TheParameter");
 ```
 
 :warning: If your code still doesn't support sound null safety, then you probably
@@ -76,30 +76,30 @@ have an older version of the library (< 1.0.0). There is no `PrefNotifier` in th
 versions. You have to create objects like this:
 
 ``` dart
-final pref = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+final myParam = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
 ```
 
 ### Read PrefNotifier value
 
-Reading is is not finished yet. But we already can access `pref.value`. By default, it returns `null`.
+Reading is is not finished yet. But we already can access `myParam.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
 ``` dart
 Widget build(BuildContext context) {
-    if (pref.value==null)
+    if (myParam.value==null)
         return Text("Not initialized yet");
     else
-        return Text("Value is ${pref.value}");
+        return Text("Value is ${myParam.value}");
 }
 ```
 
 Since `PrefNotifier` inherits from the `ValueNotifier`, we can automatically 
-rebuild the widget when the new value of `pref` will be available:
+rebuild the widget when the new value of `myParam` will be available:
 
 ``` dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: pref,
+        valueListenable: myParam,
         builder: (BuildContext context, int value, Widget child) {
             if (value==null)
                 return Text("Not initialized yet");
@@ -117,8 +117,8 @@ The code above will also rebuild the widget when value is changed. Let's change 
 onTap: () {
     // param.value is 3, shared preferences value is 3
 
-    pref.value += 1;
-    pref.value += 1;
+    myParam.value += 1;
+    myParam.value += 1;
 
     // param.value changed to 5.
     // The widget will rebuild momentarily (i.e. on the next frame)
@@ -135,11 +135,11 @@ But what if we want to get actual data before doing anything else?
 
 ``` dart
 
-final pref = PrefNotifier<int>("TheParameter");
-await pref.initialized;
+final myParam = PrefNotifier<int>("TheParameter");
+await myParam.initialized;
 
 // we waited while the object was reading the data.
-// Now pref.value returns the value from the storage, not default NULL.
+// Now myParam.value returns the value from the storage, not default NULL.
 // Even if it is NULL, it is a NULL from the storage :)
 
 ```
@@ -151,8 +151,8 @@ parameter. Do not access this parameter in any other way than through that
 PrefNotifier instance.
 
 ``` dart
-final theNotifier = PrefNotifier<int>("TheParameter");
-notifier.value = 5;
+final myParam = PrefNotifier<int>("TheParameter");
+myParam.value = 5;
 
 await (await SharedPreferences.getInstance())
     .setInt("TheParameter", 10); // DON'T DO THIS
