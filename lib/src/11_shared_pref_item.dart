@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:prefnotifiers/prefnotifiers.dart';
 
 class PrefNotifierTypeError extends TypeError {
