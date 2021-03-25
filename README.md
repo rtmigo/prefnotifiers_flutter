@@ -126,14 +126,23 @@ await pref.initialized;
 
 ## Access the value only through PrefNotifier
 
-The PrefNotifier object does not track changes in the underlying shared 
-preferences. It only caches values that were read by the PrefNotifier or passed 
-directly to the PrefNotifier.
+The `PrefNotifier` only caches values that were read by the `PrefNotifier` 
+or passed directly to the `PrefNotifier`. It does not track changes in 
+the underlying shared preferences.
 
-To avoid being out of sync, you should read and modify a specific 
-preference only through the ValueNotifier.
+If you change preferences at the same time via `PrefNotifer` and via 
+`SharedPreferences`, you will get out of sync.
 
-Do not create two objects for the same preference. This can also lead to out-of-sync.
+``` dart
 
-One preference - one object.
+final prefs = await SharedPreferences.getInstance();
+
+final pref = PrefNotifier<int>("TheParameter");
+pref.value = 5;
+
+await prefs.setInt("TheParameter", 10); // DON'T DO THIS
+
+
+```
+
 

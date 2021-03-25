@@ -25,7 +25,6 @@ rsync -Rrv ./ "$temp_pub_dir" \
   --exclude="shell_nogit/" \
   --exclude="build/" \
   --exclude="README.md" \
-  --exclude="analysis_options.yaml" \
   --exclude=".github" \
   --exclude="labuda/" \
   --exclude="draft/" \

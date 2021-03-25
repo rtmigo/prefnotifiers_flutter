@@ -13,10 +13,11 @@ void main() {
 
   setUp(() {
     SharedPreferences.setMockInitialValues({});
+    PrefNotifier.resetInstances();
   });
 
   test('get set', () async {
-    final a = PrefNotifier<int>('keyA');
+    final a = PrefNotifier<int>('keyIntA');
 
     expect(a.value, null);
     a.value = 5;
@@ -36,4 +37,37 @@ void main() {
     expect(a.value, 'new value');
     expect(await a.read(), 'new value');
   });
+
+  test('is singleton', () async {
+    final a = PrefNotifier<String>('theKey');
+    final b = PrefNotifier<String>('theKey');
+
+    await a.initialized;
+    await b.initialized;
+
+    expect(a.value, null);
+    expect(b.value, null);
+
+    a.value = 'haha';
+    expect(b.value, 'haha');
+  });
+
+  test('singleton cannot redefine type', () async {
+    PrefNotifier<int>('notifierInt');
+    expect(()=>PrefNotifier<String>('notifierInt'), throwsA(isA<PrefNotifierTypeError>()));
+  });
+
+  // test('is singleton 2', () async {
+  //   final a = PrefNotifier<String>('theKey');
+  //   final b = PrefNotifier<String>('theKey');
+  //
+  //   await a.initialized;
+  //   await b.initialized;
+  //
+  //   expect(a.value, null);
+  //   expect(b.value, null);
+  //
+  //   a.value = 'haha';
+  //   expect(b.value, 'haha');
+  // });
 }

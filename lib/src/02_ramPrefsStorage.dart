@@ -40,6 +40,7 @@ class RamPrefsStorage extends PrefsStorage {
   Future<void> setStringList(String key, List<String>? value) async =>
       _data[key] = value;
 
+  @override
   Future<Set<String>> getKeys(String key) async =>
       Set<String>.from(_data.values);
 }

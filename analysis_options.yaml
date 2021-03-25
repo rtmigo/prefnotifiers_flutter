@@ -10,6 +10,6 @@ linter:
     await_only_futures: true
 
 analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+   exclude:
+    - example/**
 

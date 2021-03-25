@@ -27,8 +27,8 @@ class MyHomePage extends StatelessWidget {
             Text('You have pushed the button this many times:'),
 
             // SHOWING THE VALUE
-            // the following widget will be automatically rebuilt when PrefNotifier
-            // finishes loading and/or when its PrefNotifier.value changes
+            // the following widget will be automatically rebuilt when
+            // PrefNotifier finishes loading and/or when its value changes
             ValueListenableBuilder(
                 valueListenable: pushesCountPref,
                 builder: (context, value, child) =>
@@ -55,11 +55,6 @@ class MyHomePage extends StatelessWidget {
                   //
                   // But our program could calculate the wrong new value,
                   // taking null for 0, when it just meant "not loaded yet".
-                  //
-                  // In this example, this problem is almost impossible:
-                  // the user would not have time to click on the button
-                  // faster than the value would be loaded on its own. But
-                  // we want to make a rock-solid program, right?
 
                 })
 
