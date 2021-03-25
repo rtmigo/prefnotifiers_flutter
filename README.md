@@ -49,11 +49,13 @@ Type                         | Replaces
 `PrefNotifier<List<String>>` | `prefs.setStringList`, `prefs.getStringList`, `prefs.remove`
 `PrefNotifier<bool>`         | `prefs.setBool`, `prefs.getBool`, `prefs.remove`
 
-`pref=PrefNotifier<int>('key')` | `prefs = await SharedPreferences.getInstance()`
+Manipulating the same `'parameterKey'`:
+
+`pref=PrefNotifier<int>('parameterKey')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`notifier.value=1`              | `await prefs.setInt('key', 'a')`
-`int? x = notifier.value`       | `int? x = await prefs.getInt('key')`
-`notifier.value = null`         | `await prefs.remove('key')`
+`notifier.value=1`              | `await prefs.setInt('parameterKey', 'a')`
+`int? x = notifier.value`       | `int? x = await prefs.getInt('parameterKey')`
+`notifier.value = null`         | `await prefs.remove('parameterKey')`
 
 ## How to use PrefNotifier?
 
