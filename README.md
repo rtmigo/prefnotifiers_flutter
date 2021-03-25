@@ -144,4 +144,4 @@ await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 // has no idea it is changed
 ```
 
-## Use only one PrefNotifier instance for each parameter
+## Use one PrefNotifier instance for each parameter
