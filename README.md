@@ -52,8 +52,7 @@ Type                         | Аlternative to SharedPreferences methods
 `PrefNotifier<String>`       | `.setString` `.getString` `.remove`
 `PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
 
-
-Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
+## PrefNotifier vs SharedPreferences
 
 `myParam = PrefNotifier<int>('MyParameter')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
