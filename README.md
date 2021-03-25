@@ -131,7 +131,7 @@ final theNotifier = PrefNotifier<int>("TheParameter");
 notifier.value = 5;
 
 var prefs = await SharedPreferences.getInstance();
-await prefs.setInt("TheParameter", 10); // DON'T DO THIS
+(await SharedPreferences.getInstance()).setInt("TheParameter", 10); // DON'T DO THIS
 
 var otherNotifier = PrefNotifier<int>("TheParameter"); // DON'T DO THIS
 otherNotifier = 20;
