@@ -41,9 +41,13 @@ final pref = PrefNotifier<int>("TheParameter");
 
 `PrefNotifier.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-Type                | Replaces 
----------------------|------------------------------------------------
-`PrefNotifier<int>`  | `prefs.setInt`, `prefs.getInt`, `prefs.remove`
+Type                         | Replaces 
+-----------------------------|------------------------------------------------------------
+`PrefNotifier<String>`       | `prefs.setString`, `prefs.getString`, `prefs.remove`
+`PrefNotifier<int>`          | `prefs.setInt`, `prefs.getInt`, `prefs.remove`
+`PrefNotifier<double>`       | `prefs.setDouble`, `prefs.getDouble`, `prefs.remove`
+`PrefNotifier<List<String>>` | `prefs.setStringList`, `prefs.getStringList`, `prefs.remove`
+`PrefNotifier<bool>`         | `prefs.setBool`, `prefs.getBool`, `prefs.remove`
 
 `PrefNotifier<int>` reads/writes an `int` value, `PrefNotifier<String>` reads/writes a `String` and so on.
 
