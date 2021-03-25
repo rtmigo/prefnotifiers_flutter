@@ -160,6 +160,6 @@ await (await SharedPreferences.getInstance())
 var otherNotifier = PrefNotifier<int>("MyParameter"); // DON'T DO THIS
 otherNotifier = 20;
 
-// now the theNotifier.value is still 5.
-// And the theNotifier has no idea it is changed
+// now the myParam.value is still 5.
+// And the myParam has no idea it is changed
 ```
