@@ -139,6 +139,6 @@ notifier.value = 5;
 var otherNotifier = PrefNotifier<int>("TheParameter"); // DON'T DO THIS
 otherNotifier = 20;
 
-// now the notifier.value is still 5.
-// And the notifier has no idea it is changed
+// now the theNotifier.value is still 5.
+// And the theNotifier has no idea it is changed
 ```
