@@ -53,7 +53,7 @@ Type                         | Аlternative to SharedPreferences
 `PrefNotifier<String>`       | `.setString` `.getString` `.remove`
 `PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
 
-## PrefNotifier vs SharedPreferences
+## Basic operations
 
 PrefNotifier | SharedPreferences
 --------------------------------|-----------------------------------------------
