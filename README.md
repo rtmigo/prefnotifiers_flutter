@@ -48,7 +48,7 @@ final myParam = PrefNotifier<int>("MyParameter");
 Type                         | Аlternative to SharedPreferences'
 -----------------------------|---------------------------------------
 `PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
-```PrefNotifier<int>```          | `.setInt` `.getInt` `.remove`
+`PrefNotifier<int>`          | `.setInt` `.getInt` `.remove`
 `PrefNotifier<double>`       | `.setDouble` `.getDouble` `.remove`
 `PrefNotifier<String>`       | `.setString` `.getString` `.remove`
 `PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
