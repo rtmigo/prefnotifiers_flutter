@@ -41,13 +41,13 @@ final pref = PrefNotifier<int>("TheParameter");
 
 `PrefNotifier.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-Type                         | Replaces 
------------------------------|------------------------------------------------------------
-`PrefNotifier<String>`       | `prefs.setString`, `prefs.getString`, `prefs.remove`
-`PrefNotifier<int>`          | `prefs.setInt`, `prefs.getInt`, `prefs.remove`
-`PrefNotifier<double>`       | `prefs.setDouble`, `prefs.getDouble`, `prefs.remove`
-`PrefNotifier<List<String>>` | `prefs.setStringList`, `prefs.getStringList`, `prefs.remove`
-`PrefNotifier<bool>`         | `prefs.setBool`, `prefs.getBool`, `prefs.remove`
+Type                         | Replaces | And | And 
+-----------------------------|----------|-----|-------------------------------
+`PrefNotifier<String>`       | `prefs.setString` | `prefs.getString` | `prefs.remove`
+`PrefNotifier<int>`          | `prefs.setInt` | `prefs.getInt` | `prefs.remove`
+`PrefNotifier<double>`       | `prefs.setDouble` | `prefs.getDouble` | `prefs.remove`
+`PrefNotifier<List<String>>` | `prefs.setStringList` | `prefs.getStringList` | `prefs.remove`
+`PrefNotifier<bool>`         | `prefs.setBool` | `prefs.getBool` | `prefs.remove`
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
