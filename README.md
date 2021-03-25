@@ -51,9 +51,9 @@ Type                         | Replaces | And | And
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
-`myParam=PrefNotifier<int>('myparam')` | `prefs = await SharedPreferences.getInstance()`
+`myParam = PrefNotifier<int>('myparam')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`myParam.value=42`              | `await prefs.setInt('myparam', 42)`
+`myParam.value = 42`              | `await prefs.setInt('myparam', 42)`
 `int? x = myParam.value`       | `int? x = await prefs.getInt('myparam')`
 `myParam.value = null`         | `await prefs.remove('myparam')`
 
