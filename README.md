@@ -51,9 +51,9 @@ Type                         | Replaces
 
 `pref=PrefNotifier<int>('key')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`notifier.value=1`              | `prefs.setInt('key', 'a')`
-`int? x = notifier.value`       | `int? x = prefs.getInt('key')`
-`notifier.value = null`         | `prefs.remove('key')`
+`notifier.value=1`              | `await prefs.setInt('key', 'a')`
+`int? x = notifier.value`       | `int? x = await prefs.getInt('key')`
+`notifier.value = null`         | `await prefs.remove('key')`
 
 ## How to use PrefNotifier?
 
