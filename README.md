@@ -126,8 +126,8 @@ await pref.initialized;
 
 ## Access the value only through PrefNotifier
 
-The `PrefNotifier` only caches values that were read by the `PrefNotifier` 
-or passed directly to the `PrefNotifier`. It does not track changes in 
+The PrefNotifier only caches values that were read by the PrefNotifier 
+or passed directly to the PrefNotifier. It does not track changes in 
 the underlying shared preferences.
 
 If you change preferences at the same time via `PrefNotifer` and via 
