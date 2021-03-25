@@ -51,11 +51,17 @@ Type                         | Replaces | And | And
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
-`pref=PrefNotifier<int>('parameterKey')` | `prefs = await SharedPreferences.getInstance()`
+`pref=PrefNotifier<int>('myKey')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
 `notifier.value=42`              | `await prefs.setInt('parameterKey', 42)`
 `int? x = notifier.value`       | `int? x = await prefs.getInt('parameterKey')`
 `notifier.value = null`         | `await prefs.remove('parameterKey')`
+
+But also
+
+``` dart
+notifier.addListener(()=>print('Value changed!');
+```
 
 ## How to use PrefNotifier?
 
