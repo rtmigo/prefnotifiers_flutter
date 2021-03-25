@@ -4,7 +4,7 @@ import 'package:prefnotifiers/prefnotifiers.dart';
 void main() => runApp(new MyApp());
 
 // this int value will be stored permanently in shared preferences
-final pushesCountPref = PrefNotifier<int>('buttonPushesCount');
+final pushesCountPref = PrefNotifier<int>('ButtonPushesCount');
 
 class MyApp extends StatelessWidget {
   @override
