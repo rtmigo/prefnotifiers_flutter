@@ -124,7 +124,9 @@ await pref.initialized;
 
 ```
 
-## Access the parameter only through PrefNotifier
+# To keep the data in sync
+
+### Access the parameter only through PrefNotifier
 
 If you change preferences at the same time via `PrefNotifer` and via 
 `SharedPreferences`, you may get out of sync.
@@ -140,7 +142,7 @@ await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 // And the notifier has no idea it is changed
 ```
 
-## One PrefNotifier instance per parameter
+### One PrefNotifier instance per parameter
 
 If you use two `PrefNotifer`s at once for the same parameter, you may get 
 out of sync.
