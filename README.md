@@ -140,11 +140,11 @@ notifier.value = 5;
 final prefs = await SharedPreferences.getInstance();
 await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 
-// now the pref.value is still 5. And the notifier 
+// now the notifier.value is still 5. And the notifier 
 // has no idea it is changed
 ```
 
-## Use one PrefNotifier instance per parameter
+## One PrefNotifier instance per parameter
 
 ``` dart
 final notifierA = PrefNotifier<int>("TheParameter");

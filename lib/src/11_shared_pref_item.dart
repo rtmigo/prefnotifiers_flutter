@@ -17,44 +17,44 @@ class PrefNotifierTypeError extends TypeError {
 }
 
 class PrefNotifier<T> extends PrefItem<T> {
-  PrefNotifier._(String key//, {
-    //T Function()? initFunc,
-    //checkValue,
-  //}
-  ): super(_commonStorage, key);
+  PrefNotifier(String key, {
+    T Function()? initFunc,
+    checkValue,
+  }
+  ): super(_commonStorage, key, initFunc: initFunc, checkValue: checkValue);
 
   static SharedPrefsStorage? _commonStorageVal;
   static SharedPrefsStorage get _commonStorage {
     return _commonStorageVal ??= SharedPrefsStorage();
     //return _commonStorageVal;
   }
-
-  factory PrefNotifier(String key) {
-
-    PrefNotifier<dynamic>? dynamicNotifier = _instances[key];
-    if (dynamicNotifier!=null) {
-      try {
-        return dynamicNotifier as PrefNotifier<T>;
-      }
-      catch (_) {
-        throw PrefNotifierTypeError(key, dynamicNotifier.runtimeType, T);
-      }
-    }
-
-    PrefNotifier<T> newNotifier = PrefNotifier<T>._(key);
-    assert(_instances[key]==null);
-    _instances[key]=newNotifier;
-
-    assert(_instances[key]==newNotifier);
-    return newNotifier;
-  }
-
-  static final Map<String,PrefNotifier> _instances = <String,PrefNotifier>{};
-
-  @visibleForTesting
-  static void resetInstances() {
-    _instances.clear();
-  }
+  //
+  // factory PrefNotifier(String key) {
+  //
+  //   PrefNotifier<dynamic>? dynamicNotifier = _instances[key];
+  //   if (dynamicNotifier!=null) {
+  //     try {
+  //       return dynamicNotifier as PrefNotifier<T>;
+  //     }
+  //     catch (_) {
+  //       throw PrefNotifierTypeError(key, dynamicNotifier.runtimeType, T);
+  //     }
+  //   }
+  //
+  //   PrefNotifier<T> newNotifier = PrefNotifier<T>._(key);
+  //   assert(_instances[key]==null);
+  //   _instances[key]=newNotifier;
+  //
+  //   assert(_instances[key]==newNotifier);
+  //   return newNotifier;
+  // }
+  //
+  // static final Map<String,PrefNotifier> _instances = <String,PrefNotifier>{};
+  //
+  // @visibleForTesting
+  // static void resetInstances() {
+  //   _instances.clear();
+  // }
 
   //SingletonOne._privateConstructor();
 
