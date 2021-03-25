@@ -124,7 +124,7 @@ await pref.initialized;
 
 ```
 
-## Access the value only through PrefNotifier
+## Access the parameter only through PrefNotifier
 
 If you change preferences at the same time via `PrefNotifer` and via 
 `SharedPreferences`, you may get out of sync.
