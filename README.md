@@ -53,7 +53,7 @@ Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
 `pref=PrefNotifier<int>('parameterKey')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`notifier.value=1`              | `await prefs.setInt('parameterKey', 'a')`
+`notifier.value=42`              | `await prefs.setInt('parameterKey', 42)`
 `int? x = notifier.value`       | `int? x = await prefs.getInt('parameterKey')`
 `notifier.value = null`         | `await prefs.remove('parameterKey')`
 
