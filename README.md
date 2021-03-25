@@ -10,7 +10,7 @@ It fits in well with the paradigm of data models. Models make data readily avail
 
 Reads and writes occur asynchronously in background.
 
-## Why use PrefNotifier?
+# Why use PrefNotifier?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
@@ -35,7 +35,7 @@ final pref = PrefNotifier<int>("TheParameter");
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
 - `pref.addListener` makes it possible to track changes of the value
 
-## What is PrefNotifier?
+# What is PrefNotifier?
 
 `PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
@@ -43,7 +43,7 @@ final pref = PrefNotifier<int>("TheParameter");
 
 `PrefNotifier<int>` reads/writes an `int` value, `PrefNotifier<String>` reads/writes a `String` and so on.
 
-## How to use PrefNotifier?
+# How to use PrefNotifier?
 
 ### Create PrefNotifier
 
