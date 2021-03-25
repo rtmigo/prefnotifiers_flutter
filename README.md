@@ -140,8 +140,8 @@ notifier.value = 5;
 final prefs = await SharedPreferences.getInstance();
 await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 
-// now the notifier.value is still 5. And the notifier 
-// has no idea it is changed
+// now the notifier.value is still 5.
+// And the notifier has no idea it is changed
 ```
 
 ## One PrefNotifier instance per parameter
