@@ -126,7 +126,7 @@ onTap: () {
     myParam.value += 1;
     myParam.value += 1;
 
-    // param.value is already changed to 5.
+    // param.value is already changed to 5
     //
     // The widget will rebuild momentarily (i.e. on the next frame)
     //
