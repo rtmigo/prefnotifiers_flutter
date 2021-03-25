@@ -126,9 +126,9 @@ await pref.initialized;
 
 ## To keep the data in sync
 
-Simply create a single global instance of PrefNotifier for a particular 
-parameter. Do not access the parameter in any other way than through that 
-PrefNotifier.
+Create a single global instance of PrefNotifier for a particular 
+parameter. Do not access this parameter in any other way than through that 
+PrefNotifier instance.
 
 ``` dart
 final theNotifier = PrefNotifier<int>("TheParameter");
