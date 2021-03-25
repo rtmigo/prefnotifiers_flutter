@@ -51,13 +51,13 @@ Type                         | Replaces | And | And
 `PrefNotifier<List<String>>` | `prefs.setStringList` | `prefs.getStringList` | `prefs.remove`
 `PrefNotifier<bool>`         | `prefs.setBool` | `prefs.getBool` | `prefs.remove`
 
-Type                         | Replaces  | And | And 
------------------------------|----------|-----|-------------------------------
-`PrefNotifier<String>`       | `.setString` `.getString` | `.remove`
-`PrefNotifier<int>`          | `.setInt` | `.getInt` | `.remove`
-`PrefNotifier<double>`       | `.setDouble` | `.getDouble` | `.remove`
-`PrefNotifier<List<String>>` | `.setStringList` | `.getStringList` | `.remove`
-`PrefNotifier<bool>`         | `.setBool` | `.getBool` | `.remove`
+Type                         | Replaces SharedPreferences methods
+-----------------------------|---------------------------------------
+`PrefNotifier<String>`       | `.setString` `.getString` `.remove`
+`PrefNotifier<int>`          | `.setInt` `.getInt` `.remove`
+`PrefNotifier<double>`       | `.setDouble` `.getDouble` `.remove`
+`PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
+`PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
