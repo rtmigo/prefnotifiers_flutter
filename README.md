@@ -43,21 +43,15 @@ final myParam = PrefNotifier<int>("MyParameter");
 
 `PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
-Type                         | Replaces | And | And 
------------------------------|----------|-----|-------------------------------
-`PrefNotifier<String>`       | `prefs.setString` | `prefs.getString` | `prefs.remove`
-`PrefNotifier<int>`          | `prefs.setInt` | `prefs.getInt` | `prefs.remove`
-`PrefNotifier<double>`       | `prefs.setDouble` | `prefs.getDouble` | `prefs.remove`
-`PrefNotifier<List<String>>` | `prefs.setStringList` | `prefs.getStringList` | `prefs.remove`
-`PrefNotifier<bool>`         | `prefs.setBool` | `prefs.getBool` | `prefs.remove`
 
 Type                         | Replaces SharedPreferences methods
 -----------------------------|---------------------------------------
-`PrefNotifier<String>`       | `.setString` `.getString` `.remove`
+`PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
 `PrefNotifier<int>`          | `.setInt` `.getInt` `.remove`
 `PrefNotifier<double>`       | `.setDouble` `.getDouble` `.remove`
+`PrefNotifier<String>`       | `.setString` `.getString` `.remove`
 `PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
-`PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
+
 
 Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
