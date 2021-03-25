@@ -44,7 +44,7 @@ final myParam = PrefNotifier<int>("MyParameter");
 `PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
 
-Type                         | Аlternative to SharedPreferences methods
+Type                         | Аlternative to SharedPreferences
 -----------------------------|---------------------------------------
 `PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
 `PrefNotifier<int>`          | `.setInt` `.getInt` `.remove`
