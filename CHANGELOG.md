@@ -1,3 +1,8 @@
+# 1.0.3
+
+- Not a beta anymore
+- Documentation updates 
+
 # 1.0.2-beta
 
 - Migrated to sound null safety
