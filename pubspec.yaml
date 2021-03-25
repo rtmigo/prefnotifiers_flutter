@@ -1,15 +1,12 @@
 name: prefnotifiers
 description: Represents shared preferences as ValueNotifier objects. Reads and writes occur asynchronously in background.
-version: 1.0.2-beta
+version: 1.0.3
 homepage: https://github.com/rtmigo/prefnotifiers
 
 environment:
-  # shared preferences 2021-03-25:
+  # same as in shared preferences 2.0.5 2021-03-25:
   sdk: ">=2.12.0-259.9.beta <3.0.0"
   flutter: ">=1.12.13+hotfix.5"
-
-  #sdk: ">=2.12.0-beta <3.0.0"
-  #flutter: ">=2.0.0"
 
 dependencies:
   flutter:
