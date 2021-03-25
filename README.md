@@ -124,12 +124,12 @@ The code above will also rebuild the widget when value is changed. Let's change 
 
 ``` dart
 onTap: () {
-    // param.value is 3, shared preferences value is 3
+    // myParam.value is 3, shared preferences value is 3
 
     myParam.value += 1;
     myParam.value += 1;
 
-    // param.value is already changed to 5
+    // myParam.value is already changed to 5
     //
     // The widget will rebuild momentarily (i.e. on the next frame)
     //
