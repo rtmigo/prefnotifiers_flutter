@@ -49,11 +49,11 @@ Type                         | Replaces
 `PrefNotifier<List<String>>` | `prefs.setStringList`, `prefs.getStringList`, `prefs.remove`
 `PrefNotifier<bool>`         | `prefs.setBool`, `prefs.getBool`, `prefs.remove`
 
-pref=PrefNotifier<int>('key')   | prefs = await SharedPreferences.getInstance()
+`pref=PrefNotifier<int>('key')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
-`notifier.value=1                | prefs.setInt('key', 'a');
-```dart int? x = notifier.value```         | int? x = prefs.getInt('key');
-`notifier.value = null`           | prefs.remove('key');
+`notifier.value=1`              | `prefs.setInt('key', 'a')`
+`int? x = notifier.value`       | `int? x = prefs.getInt('key')`
+`notifier.value = null`         | `prefs.remove('key')`
 
 ## How to use PrefNotifier?
 
