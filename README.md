@@ -140,7 +140,7 @@ notifier.value = 5;
 final prefs = await SharedPreferences.getInstance();
 await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 
-// now the pref.value is still 5. And the PrefNotifier 
+// now the pref.value is still 5. And the notifier 
 // has no idea it is changed
 ```
 
@@ -153,6 +153,6 @@ final notifierB = PrefNotifier<int>("TheParameter"); // DON'T DO THIS
 notifierA.value = 5;
 notifierB.value = 10;
 
-// now the prefA.value is still 5. 
-// And prefA has no idea it is changed
+// now the notifierA.value is still 5. 
+// And notifierA has no idea it is changed
 ```
