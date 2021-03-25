@@ -71,13 +71,17 @@ myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 final myParam = PrefNotifier<int>("MyParameter");
 ```
 
-:warning: If your code still doesn't support sound null safety, then you probably
-have an older version of the library (< 1.0.0). There is no `PrefNotifier` in the older 
-versions. You have to create objects like this:
+<details>
+    <summary>Before 1.0.0 and sound null safety it's PrefItem</summary>
 
 ``` dart
 final myParam = PrefItem<int>(SharedPrefsStorage(), "MyParameter");
 ```
+
+In newer version `PrefItem` works as well. `PrefNotifier` is an easier to use alias.   
+
+</details>
+
 
 ### Read PrefNotifier value
 
