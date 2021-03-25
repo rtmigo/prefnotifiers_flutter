@@ -140,7 +140,7 @@ For a newly created `PrefNotifier` the `value` returns `null` until the object
 reads the actual data from the storage. Asynchronous **loading starts 
 automatically when the object is created**.
  
-But what if we want to get actual data before doing anything else?
+But what if we want to get the loaded data before doing anything else?
 
 ``` dart
 
