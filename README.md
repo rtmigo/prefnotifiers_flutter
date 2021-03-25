@@ -182,6 +182,6 @@ To test a program that uses PrefNotifiers, you can populate initial values
 the same way, as in the case of using SharedPreferences directly: 
 
 ``` dart 
-SharedPreferences.setMockInitialValues (Map<String, dynamic> values);
+SharedPreferences.setMockInitialValues(Map<String, dynamic> values);
 ```
 
