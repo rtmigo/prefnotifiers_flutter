@@ -49,7 +49,7 @@ Type                         | Replaces
 `PrefNotifier<List<String>>` | `prefs.setStringList`, `prefs.getStringList`, `prefs.remove`
 `PrefNotifier<bool>`         | `prefs.setBool`, `prefs.getBool`, `prefs.remove`
 
-Manipulating the same `'parameterKey'`:
+Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 
 `pref=PrefNotifier<int>('parameterKey')` | `prefs = await SharedPreferences.getInstance()`
 --------------------------------|-----------------------------------------------
