@@ -37,9 +37,11 @@ final myParam = PrefNotifier<int>("MyParameter");
 
 # What is PrefNotifier?
 
-`PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
+
 
 `PrefNotifier.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
+
+`PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
 Type                         | Replaces | And | And 
 -----------------------------|----------|-----|-------------------------------
