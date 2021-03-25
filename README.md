@@ -127,7 +127,7 @@ await pref.initialized;
 ## Access the value only through PrefNotifier
 
 If you change preferences at the same time via `PrefNotifer` and via 
-`SharedPreferences`, you will get out of sync.
+`SharedPreferences`, you may get out of sync.
 
 ``` dart
 final notifier = PrefNotifier<int>("TheParameter");
@@ -142,7 +142,7 @@ await prefs.setInt("TheParameter", 10); // DON'T DO THIS
 
 ## One PrefNotifier instance per parameter
 
-If you use two `PrefNotifer`s at once for the same parameter, you will get 
+If you use two `PrefNotifer`s at once for the same parameter, you may get 
 out of sync.
 
 
