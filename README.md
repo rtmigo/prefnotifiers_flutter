@@ -67,7 +67,7 @@ myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 
 # How to use PrefNotifier?
 
-### Create 
+## Create 
 
 ``` dart
 final myParam = PrefNotifier<int>("MyParameter");
@@ -85,7 +85,7 @@ In newer version of the library `PrefItem` works as well. `PrefNotifier` is an e
 </details>
 
 
-### Read 
+## Read 
 
 Reading is is not finished yet. But we already can access `myParam.value`. By default, it returns `null`.
 We can use it in synchronous code:
