@@ -126,7 +126,7 @@ onTap: () {
     myParam.value += 1;
     myParam.value += 1;
 
-    assert(  myParam.value == 5 );
+    assert( myParam.value == 5 );
 
     // param.value is already changed to 5.
     //
