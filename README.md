@@ -57,7 +57,7 @@ Manipulating the same key with `PrefNotifier` and with `SharedPreferences`:
 `int? x = notifier.value`       | `int? x = await prefs.getInt('parameterKey')`
 `notifier.value = null`         | `await prefs.remove('parameterKey')`
 
-But also
+But the most great is
 
 ``` dart
 notifier.addListener(()=>print('Value changed!');
