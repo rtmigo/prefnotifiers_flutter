@@ -1,4 +1,4 @@
-# 1.0.6
+# 1.0.7
 
 - Not a beta anymore
 - Documentation updates 
