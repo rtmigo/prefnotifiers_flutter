@@ -155,8 +155,8 @@ await myParam.initialized;
 
 ## Keep in sync
 
-Create a single global instance of PrefNotifier for a particular 
-parameter. Only access this parameter with this PrefNotifier instance.
+Create a **single instance** of PrefNotifier for a **particular 
+parameter**. Only access this parameter with this PrefNotifier instance.
 
 ``` dart
 final myParam = PrefNotifier<int>("MyParameter");
