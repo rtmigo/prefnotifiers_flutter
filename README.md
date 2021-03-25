@@ -106,7 +106,7 @@ rebuild the widget when the new value of `myParam` will be available:
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: myParam,
-        builder: (BuildContext context, int value, Widget child) {
+        builder: (BuildContext context, int? value, Widget child) {
             if (value==null)
                 return Text("Not initialized yet");
             else
