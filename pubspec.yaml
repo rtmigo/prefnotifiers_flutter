@@ -1,6 +1,6 @@
 name: prefnotifiers
 description: Represents shared preferences as ValueNotifier objects. Reads and writes occur asynchronously in background.
-version: 1.0.5
+version: 1.0.6
 homepage: https://github.com/rtmigo/prefnotifiers
 
 environment:
