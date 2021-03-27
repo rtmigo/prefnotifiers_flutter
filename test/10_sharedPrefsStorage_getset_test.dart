@@ -25,8 +25,10 @@ void main() {
     test(T.toString(), () async {
       final storage = SharedPrefsStorage();
       expect(await getFunc(storage, 'key'), null);
+
       await setFunc(storage, 'key', null);
       expect(await getFunc(storage, 'key'), null);
+
       await setFunc(storage, 'key', a);
       expect(await getFunc(storage, 'key'), a);
 

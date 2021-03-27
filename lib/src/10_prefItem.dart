@@ -16,6 +16,15 @@ import '10_awaitableCalls.dart';
 typedef CheckValueFunc<T> = Function(T val);
 typedef AdjustFunc<T> = T Function(T old);
 
+enum ItemType {
+  int,
+  double,
+  bool,
+  string,
+  stringList,
+  dateTime
+}
+
 /// Represents a particular named value in a [PrefsStorage].
 ///
 /// The [value] property acts like a synchronous "cache", while real reading and writing
@@ -29,6 +38,30 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
     T Function()? initFunc,
     this.checkValue,
   }) {
+
+
+    if (T == int) {
+      this._type = ItemType.int;
+    }
+    else if (T == String) {
+      this._type = ItemType.string;
+    }
+    else if (T == double) {
+      this._type = ItemType.double;
+    }
+    else if (T == bool) {
+      this._type = ItemType.bool;
+    }
+    else if (T.toString()=='List<String>') {
+      this._type = ItemType.stringList;
+    }
+    else if (T == DateTime) {
+      this._type = ItemType.dateTime;
+    }
+    else {
+      throw TypeError();
+    }
+
     this._initCompleter = Completer<PrefItem<T>>();
     this._initCompleteFuture = this._initCompleter.future;
 
@@ -39,6 +72,8 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
       this.read();
     }
   }
+
+  late ItemType _type;
 
   @override
   void dispose() {
@@ -85,28 +120,31 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
 
     T? t;
 
-    if (T == int) {
-      t = await storage.getInt(key) as T?;
-    }
-    else if (T == String) {
-      dynamic val = await storage.getString(key);
-      print('Got val $val');
-      t = (await storage.getString(key)) as T?;
-    }
-    else if (T == double) {
-      t = await storage.getDouble(key) as T?;
-    }
-    else if (T == bool) {
-      t = await storage.getBool(key) as T?;
-    }
-    else if (T == List) {
-      t = await storage.getStringList(key) as T?;
-    }
-    else if (T == DateTime) {
-      t = await storage.getDateTime(key) as T?;
-    }
-    else {
-      throw FallThroughError();
+    //print(T);
+    //print(T.toString()=='List<String>');
+    //print(T is List<String>);
+
+    switch (this._type) {
+      case ItemType.bool:
+        t = await storage.getBool(key) as T?;
+        break;
+      case ItemType.int:
+        t = await storage.getInt(key) as T?;
+        break;
+      case ItemType.double:
+        t = await storage.getDouble(key) as T?;
+        break;
+      case ItemType.string:
+        t = await storage.getString(key) as T?;
+        break;
+      case ItemType.stringList:
+        t = await storage.getStringList(key) as T?;
+        break;
+      case ItemType.dateTime:
+        t = await storage.getDateTime(key) as T?;
+        break;
+      default:
+        throw FallThroughError();
     }
 
     logInfo('PrefItem: read $key, result=$t');
@@ -118,8 +156,6 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
 
   Future<T?> _init(T Function() initFunc) async {
     if (this.isDisposed) return null;
-    //if (this.isInitialized)
-    //throw StateError("");
 
     T? t = await this.read();
 
@@ -181,26 +217,27 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
     await this._writeCalls.run(() async {
       if (this.isDisposed) { return; }
 
-      if (T == int) {
-        await storage.setInt(key, value == null ? null : value as int);
-      }
-      else if (T == String) {
-        await storage.setString(key, value == null ? null : value as String);
-      }
-      else if (T == double) {
-        await storage.setDouble(key, value==null ? null : value as double);
-      }
-      else if (T == bool) {
-        await storage.setBool(key, value == null ? null : value as bool);
-      }
-      else if (T == DateTime) {
-        await storage.setDateTime(key, value == null ? null : value as DateTime);
-      }
-      else if (T == List) {
-        await storage.setStringList(key, value == null ? null : value as List<String>);
-      }
-      else {
-        throw FallThroughError();
+      switch (this._type) {
+        case ItemType.bool:
+          await storage.setBool(key, value == null ? null : value as bool);
+          break;
+        case ItemType.int:
+          await storage.setInt(key, value == null ? null : value as int);
+          break;
+        case ItemType.double:
+          await storage.setDouble(key, value==null ? null : value as double);
+          break;
+        case ItemType.string:
+          await storage.setString(key, value == null ? null : value as String);
+          break;
+        case ItemType.stringList:
+          await storage.setStringList(key, value == null ? null : value as List<String>);
+          break;
+        case ItemType.dateTime:
+          await storage.setDateTime(key, value == null ? null : value as DateTime);
+          break;
+        default:
+          throw FallThroughError();
       }
     });
   }

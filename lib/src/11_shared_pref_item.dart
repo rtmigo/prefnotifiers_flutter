@@ -9,11 +9,13 @@ class PrefNotifier<T> extends PrefItem<T> {
     String key, {
     T Function()? initFunc,
     checkValue,
-  }) : super(_commonStorage, key, initFunc: initFunc, checkValue: checkValue);
+  }) : super(commonStorage, key, initFunc: initFunc, checkValue: checkValue);
 
   static SharedPrefsStorage? _commonStorageVal;
 
-  static SharedPrefsStorage get _commonStorage {
+  static SharedPrefsStorage get commonStorage {
     return _commonStorageVal ??= SharedPrefsStorage();
   }
+
+  //static
 }

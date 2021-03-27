@@ -10,32 +10,34 @@ import '02_ramPrefsStorage.dart';
 
 /// A [PrefsStorage] that stores the data in platform-dependent [SharedPreferences].
 class SharedPrefsStorage extends PrefsStorage {
-  final Future<SharedPreferences> _sp = SharedPreferences.getInstance();
+  final Future<SharedPreferences> sp = SharedPreferences.getInstance();
 
   @override
-  Future<String?> getString(String key) async => (await this._sp).getString(key);
+  Future<String?> getString(String key) async => (await this.sp).getString(key);
 
   @override
-  Future<bool?> getBool(String key) async => (await this._sp).getBool(key);
+  Future<bool?> getBool(String key) async => (await this.sp).getBool(key);
 
   @override
-  Future<int?> getInt(String key) async => (await this._sp).getInt(key);
+  Future<int?> getInt(String key) async => (await this.sp).getInt(key);
 
   @override
-  Future<double?> getDouble(String key) async => (await this._sp).getDouble(key);
+  Future<double?> getDouble(String key) async => (await this.sp).getDouble(key);
 
   @override
   Future<List<String>?> getStringList(String key) async =>
-      (await this._sp).getStringList(key);
+      (await this.sp).getStringList(key);
 
   Future<void> _setOrRemove<T>(
       String key,
       T? value,
       Future<void> Function(SharedPreferences, String, T) setFunc)
   async {
-    SharedPreferences sps = await this._sp;
+    SharedPreferences sps = await this.sp;
     if (value!=null) {
+      //print("REALLY SETTING $value");
       await setFunc(sps, key, value);
+      //print("AFTER SET ${(await SharedPreferences.getInstance()).getString(key)}");
     } else {
       await sps.remove(key);
     }
@@ -43,31 +45,31 @@ class SharedPrefsStorage extends PrefsStorage {
 
   @override
   Future<void> setString(String key, String? value)
-  => _setOrRemove<String>(key, value, (sps, k, v) => sps.setString(key, v));
+  => _setOrRemove<String>(key, value, (sps, k, v) => sps.setString(k, v));
 
   @override
   Future<void> setDouble(String key, double? value)
-  => _setOrRemove<double>(key, value, (sps, k, v) => sps.setDouble(key, v));
+  => _setOrRemove<double>(key, value, (sps, k, v) => sps.setDouble(k, v));
 
   @override
   Future<void> setInt(String key, int? value)
-  => _setOrRemove<int>(key, value, (sps, k, v) => sps.setInt(key, v));
+  => _setOrRemove<int>(key, value, (sps, k, v) => sps.setInt(k, v));
 
   @override
   Future<void> setBool(String key, bool? value)
-  => _setOrRemove<bool>(key, value, (sps, k, v) => sps.setBool(key, v));
+  => _setOrRemove<bool>(key, value, (sps, k, v) => sps.setBool(k, v));
 
   @override
   Future<void> setStringList(String key, List<String>? value)
-  => _setOrRemove<List<String>>(key, value, (sps, k, v) => sps.setStringList(key, v));
+  => _setOrRemove<List<String>>(key, value, (sps, k, v) => sps.setStringList(k, v));
 
   @override
-  Future<Set<String>> getKeys(String key) async => (await this._sp).getKeys();
+  Future<Set<String>> getKeys(String key) async => (await this.sp).getKeys();
 
   static Future<PrefsStorage> withTestingFallback() async {
     try {
       final result = SharedPrefsStorage();
-      await result._sp;
+      await result.sp;
       return result;
     } on MissingPluginException catch (_, __) {
       print('Using RamPrefsStorage instead of SharedPrefsStorage.');

@@ -25,16 +25,38 @@ void main() {
     expect(await a.read(), 5);
   });
 
-  test('read write', () async {
-    final a = PrefNotifier<String>('keyA');
+  //Future<SharedPreferences> spi() => SharedPreferences.getInstance();
 
-    await a.initialized;
+  void tst<T>(T newValue, T? Function(SharedPreferences sp, String key) getStoredValue) {
 
-    expect(a.value, null);
+    assert(T!=Null);
 
-    await a.write('new value');
+    test('read write $T', () async {
+      //SharedPreferences.setMockInitialValues({});
+      final spi = await PrefNotifier.commonStorage.sp;
+      final key = 'keyA$T';
 
-    expect(a.value, 'new value');
-    expect(await a.read(), 'new value');
-  });
+      expect(getStoredValue(spi, key), isNull);
+
+      // reading null
+      final a = PrefNotifier<T>(key);
+      await a.initialized;
+      expect(a.value, null);
+
+      // writing
+      await a.write(newValue);
+
+      // check it's written
+      expect(a.value, newValue);
+      expect(await a.read(), newValue);
+      expect(getStoredValue(spi, key), newValue);
+    });
+  }
+
+  tst<String>('new value', (spi, key)=>spi.getString(key));
+  tst<int>(10, (spi, key)=>spi.getInt(key));
+  tst<double>(10.10, (spi, key)=>spi.getDouble(key));
+  tst<bool>(true, (spi, key)=>spi.getBool(key));
+  tst<List<String>>(['abc','def'], (spi, key)=>spi.getStringList(key));
+
 }

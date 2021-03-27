@@ -1,3 +1,7 @@
+# 1.0.8
+
+- FIX: An attempt to save or read a List<String> raised an exception
+
 # 1.0.7+1
 
 - Not a beta anymore
