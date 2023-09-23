@@ -1,4 +1,4 @@
-// Copyright (c) 2021 Artёm Galkin. All rights reserved.
+// Copyright (c) 2021 Artёm Galkin <github.com/rtmigo>. All rights reserved.
 // Use of this source code is governed by the BSD-3-Clause license found
 // in the LICENSE file in the root directory of this source tree
 
@@ -9,3 +9,4 @@ export 'src/01_prefsStorage.dart';
 export 'src/02_ramPrefsStorage.dart';
 export 'src/02_sharedPrefsStorage.dart';
 export 'src/10_prefItem.dart';
+export 'src/11_shared_pref_item.dart';

@@ -2,19 +2,21 @@
 [![pub points](https://badges.bar/prefnotifiers/pub%20points)](https://pub.dev/packages/prefnotifiers/score)
 [![Actions Status](https://github.com/rtmigo/prefnotifiers.flutter/workflows/ci%20test/badge.svg?branch=master)](https://github.com/rtmigo/prefnotifiers.flutter/actions)
 
+# [prefnotifiers](https://github.com/rtmigo/prefnotifiers)
+
 This library represents [shared_preferences](https://pub.dev/packages/shared_preferences) as `ValueNotifier` objects.
 
 It fits in well with the paradigm of data models. Models make data readily available to widgets.
 
 Reads and writes occur asynchronously in background.
 
-## Why use PrefItem?
+# Why use PrefNotifier?
 
 Suppose, we have parameter, that can be read with [shared_preferences](https://pub.dev/packages/shared_preferences) like that:
 
-```dart
+``` dart
 final prefs = await SharedPreferences.getInstance();
-int paramValue = await prefs.getInt("TheParameter");
+int myParamValue = await prefs.getInt("MyParameter");
 ```
 
 There are two lines of problem:
@@ -22,54 +24,92 @@ There are two lines of problem:
 - This code is asynchronous. We cannot use such code directly when building a widget
 - The `paramValue` does not reflect the parameter changes
 
-Instead, we suggest using the new `PrefItem` class for accessing the parameter:
+Instead, we suggest using the new `PrefNotifier` class for accessing the parameter:
 
-```dart
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+``` dart
+final myParam = PrefNotifier<int>("MyParameter");
 ```
 
-- `param` object can be used as the only representation of `"TheParameter"` in the whole program
-- `param.value` allows indirectly read and write the shared preference value without getting out of sync
+- `myParam` object can be used as the only representation of `"MyParameter"` in the whole program
+- `myParam.value` allows indirectly read and write the shared preference value without getting out of sync
 - `Widget build(_)` methods can access value without relying on `FutureBuilder`
-- `param.addListener` makes it possible to track changes of the value
+- `myParam.addListener` makes it possible to track changes of the value
 
-## What is PrefItem?
+# What is PrefNotifier?
 
-PrefItem serves as a **model** for an individual parameter stored in shared preferences.
 
-`PrefItem.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-`PrefItem<int>` reads/writes an `int` value, `PrefItem<String>` reads/writes a `String` and so on.
+`PrefNotifier.value` provides **the best value we have for the moment**. The actual read/write operations happen asynchronously in background.
 
-## How to use PrefItem?
+`PrefNotifier` serves as a **model** for an individual parameter stored in shared preferences.
 
-### Create PrefItem
+## Types
 
-```dart
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
+Type                         | Аlternative to SharedPreferences'
+-----------------------------|---------------------------------------
+`PrefNotifier<bool>`         | `.setBool` `.getBool` `.remove`
+`PrefNotifier<int>`          | `.setInt` `.getInt` `.remove`
+`PrefNotifier<double>`       | `.setDouble` `.getDouble` `.remove`
+`PrefNotifier<String>`       | `.setString` `.getString` `.remove`
+`PrefNotifier<List<String>>` | `.setStringList` `.getStringList` `.remove`
+
+## Basic operations
+
+PrefNotifier | SharedPreferences
+--------------------------------|-----------------------------------------------
+`myParam = PrefNotifier<int>('MyParameter')` | `prefs = await SharedPreferences.getInstance()`
+`myParam.value = 42`              | `await prefs.setInt('MyParameter', 42)`
+`int? x = myParam.value`       | `int? x = await prefs.getInt('MyParameter')`
+`myParam.value = null`         | `await prefs.remove('MyParameter')`
+
+But the most great is:
+
+``` dart
+myParam.addListener(() => print('Value changed! New value: ${myParam.value}');
 ```
 
-### Read PrefItem value
+# How to use PrefNotifier?
 
-Reading is is not finished yet. But we already can access `param.value`. By default, it returns `null`.
+## Create 
+
+``` dart
+final myParam = PrefNotifier<int>("MyParameter");
+```
+
+<details>
+    <summary>Before 1.0.0 and sound null safety it's PrefItem</summary>
+
+``` dart
+final myParam = PrefItem<int>(SharedPrefsStorage(), "MyParameter");
+```
+
+In newer version of the library `PrefItem` works as well. `PrefNotifier` is an easier to use alias.   
+
+</details>
+
+
+## Read 
+
+Reading is is not finished yet. But we already can access `myParam.value`. By default, it returns `null`.
 We can use it in synchronous code:
 
-```dart
+``` dart
 Widget build(BuildContext context) {
-    if (param.value==null)
+    if (myParam.value==null)
         return Text("Not initialized yet");
     else
-        return Text("Value is ${param.value}");
+        return Text("Value is ${myParam.value}");
 }
 ```
 
-Since `PrefItem` inherits from the `ValueNotifier` class, we can automatically rebuild the widget when the `param` will be available:
+Since `PrefNotifier` inherits from the `ValueListenable`, we can automatically 
+rebuild the widget when the new value of `myParam` will be available:
 
-```dart
+``` dart
 Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: param,
-        builder: (BuildContext context, int value, Widget child) {
+        valueListenable: myParam,
+        builder: (BuildContext context, int? value, Widget child) {
             if (value==null)
                 return Text("Not initialized yet");
             else
@@ -78,18 +118,19 @@ Widget build(BuildContext context) {
 }
 ```
 
-### Write PrefItem value
+## Write 
 
 The code above will also rebuild the widget when value is changed. Let's change the value in a button callback:
 
-```dart
+``` dart
 onTap: () {
-    // param.value is 3, shared preferences value is 3
+    // myParam.value is 3, shared preferences value is 3
 
-    param.value += 1;
-    param.value += 1;
+    myParam.value += 1;
+    myParam.value += 1;
 
-    // param.value changed to 5.
+    // myParam.value is already changed to 5
+    //
     // The widget will rebuild momentarily (i.e. on the next frame)
     //
     // Shared preferences still contain value 3. But asynchronous writing
@@ -97,54 +138,51 @@ onTap: () {
 }
 ```
 
-### Wait for PrefItem value
+## Load
 
-For a newly created `PrefItem` the `value` returns `null` until the object reads the actual data from the storage.
-But what if we want to get actual data before doing anything else?
+For a newly created `PrefNotifier` the `value` returns `null` until the object 
+reads the actual data from the storage. Asynchronous **loading starts 
+automatically when the object is created**.
+ 
+But what if we want to get the loaded data before doing anything else?
 
-```dart
+``` dart
 
-final param = PrefItem<int>(SharedPrefsStorage(), "TheParameter");
-await param.initialized;
+final myParam = PrefNotifier<int>("TheParameter");
+await myParam.initialized;
 
 // we waited while the object was reading the data.
-// Now param.value returns the value from the storage, not default NULL.
+// Now myParam.value returns the value from the storage, not default NULL.
 // Even if it is NULL, it is a NULL from the storage :)
 
 ```
 
-## What is PrefsStorage?
+## Keep in sync
 
-Each `PrefItem` relies on a `PrefsStorage` that actually stores data.
+Create a **single instance** of PrefNotifier for a **particular 
+parameter**. Only access this parameter with this PrefNotifier instance.
 
-```dart
+``` dart
+final myParam = PrefNotifier<int>("MyParameter");
+myParam.value = 5;
 
-final itemInSharedPreferences = PrefItem<int>(SharedPrefsStorage(), ...);
+await (await SharedPreferences.getInstance())
+    .setInt("MyParameter", 10); // DON'T DO THIS
 
-final itemInRam = PrefItem<int>(RamPrefsStorage(), ...);
+var otherNotifier = PrefNotifier<int>("MyParameter"); // DON'T DO THIS
+otherNotifier = 20;
 
-final itemInFile = PrefItem<int>(CustomJsonPrefsStorage(), ...);
-
+// now the myParam.value is still 5.
+// And the myParam has no idea it is changed
 ```
 
-Normally same instance of `PrefsStorage` is used by multiple `PrefItem` objects:
+## Test
 
-```dart
+To test a program that uses PrefNotifiers, you can populate initial values 
+the same way, as in the case of using SharedPreferences directly: 
 
-final storage = SharedPrefsStorage();
-
-final a = PrefItem<String>(storage, "nameA");
-final b = PrefItem<double>(storage, "nameB");
-
+``` dart 
+TestWidgetsFlutterBinding.ensureInitialized();
+SharedPreferences.setMockInitialValues(Map<String, dynamic> values);
 ```
-
-- `SharedPrefsStorage` stores preferences in platform-dependent [shared_preferences](https://pub.dev/packages/shared_preferences)
-
-- `RamPrefsStorage` stores preferences in RAM. This class is mostly useful for testing
-
-- `PrefsStorage` is an abstract base class describing a storage. A descendant should be able of reading and writing
-named values of types `int`, `double`, `String`, `StringList` and `DateTime`
-
-
-
 

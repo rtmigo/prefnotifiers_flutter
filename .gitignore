@@ -1,5 +1,9 @@
 # my
 **_nogit/
+shell_nogit/
+
+example/
+!example/lib/example.dart
 
 # Miscellaneous
 *.class
@@ -17,6 +21,8 @@
 *.ipr
 *.iws
 .idea/
+
+**/lib/generated_plugin_registrant.dart
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line

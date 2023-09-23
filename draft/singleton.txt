@@ -1,0 +1,64 @@
+  // test('is singleton', () async {
+  //   final a = PrefNotifier<String>('theKey');
+  //   final b = PrefNotifier<String>('theKey');
+  //
+  //   await a.initialized;
+  //   await b.initialized;
+  //
+  //   expect(a.value, null);
+  //   expect(b.value, null);
+  //
+  //   a.value = 'haha';
+  //   expect(b.value, 'haha');
+  // });
+  //
+  // test('singleton cannot redefine type', () async {
+  //   PrefNotifier<int>('notifierInt');
+  //   expect(()=>PrefNotifier<String>('notifierInt'), throwsA(isA<PrefNotifierTypeError>()));
+  // });
+
+  // test('is singleton 2', () async {
+  //   final a = PrefNotifier<String>('theKey');
+  //   final b = PrefNotifier<String>('theKey');
+  //
+  //   await a.initialized;
+  //   await b.initialized;
+  //
+  //   expect(a.value, null);
+  //   expect(b.value, null);
+  //
+  //   a.value = 'haha';
+  //   expect(b.value, 'haha');
+  // });
+
+  //
+  // factory PrefNotifier(String key) {
+  //
+  //   PrefNotifier<dynamic>? dynamicNotifier = _instances[key];
+  //   if (dynamicNotifier!=null) {
+  //     try {
+  //       return dynamicNotifier as PrefNotifier<T>;
+  //     }
+  //     catch (_) {
+  //       throw PrefNotifierTypeError(key, dynamicNotifier.runtimeType, T);
+  //     }
+  //   }
+  //
+  //   PrefNotifier<T> newNotifier = PrefNotifier<T>._(key);
+  //   assert(_instances[key]==null);
+  //   _instances[key]=newNotifier;
+  //
+  //   assert(_instances[key]==newNotifier);
+  //   return newNotifier;
+  // }
+  //
+  // static final Map<String,PrefNotifier> _instances = <String,PrefNotifier>{};
+  //
+  // @visibleForTesting
+  // static void resetInstances() {
+  //   _instances.clear();
+  // }
+
+  //SingletonOne._privateConstructor();
+
+  //static final SingletonOne _instance = SingletonOne._privateConstructor();

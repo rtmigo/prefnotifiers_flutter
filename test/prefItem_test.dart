@@ -1,9 +1,10 @@
-// Copyright (c) 2021 Artёm Galkin. All rights reserved.
+// Copyright (c) 2021 Artёm Galkin <github.com/rtmigo>. All rights reserved.
 // Use of this source code is governed by the BSD-3-Clause license found
 // in the LICENSE file in the root directory of this source tree
 
 import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
+//#import 'package:pedantic/pedantic.dart';
 import 'package:prefnotifiers/prefnotifiers.dart';
 
 void main() {
@@ -11,36 +12,36 @@ void main() {
   test('adjust simple', () async {
     final storage = RamPrefsStorage();
 
-    final pi = PrefItem<int>(storage, "pi");
+    final pi = PrefItem<int>(storage, 'pi');
     expect(await pi.read(), null);
 
-    pi.write(0);
+    unawaited(pi.write(0));
     expect(await pi.read(), 0);
 
-    expect(await pi.adjust((old) => old + 1), 1);
+    expect(await pi.adjust((old) => old! + 1), 1);
     expect(await pi.read(), 1);
 
-    expect(await pi.adjust((old) => old + 1), 2);
+    expect(await pi.adjust((old) => old! + 1), 2);
     expect(await pi.read(), 2);
   });
 
   test('PrefItem write completers', () async {
     final storage = RamPrefsStorage();
 
-    final pi = PrefItem<int>(storage, "pi");
+    final pi = PrefItem<int>(storage, 'pi');
 
     // запускаю кучу спонтанных операций записи. Но read прочитает значение только когда
     // все процедуры записи завершатся
 
-    pi.write(1);
+    unawaited(pi.write(1));
     await pi.write(2);
-    pi.write(3);
-    pi.write(4);
+    unawaited(pi.write(3));
+    unawaited(pi.write(4));
     await pi.write(5);
-    pi.write(6);
-    pi.write(7);
-    pi.write(8);
-    pi.write(9);
+    unawaited(pi.write(6));
+    unawaited(pi.write(7));
+    unawaited(pi.write(8));
+    unawaited(pi.write(9));
 
     expect(await pi.read(), 9);
   });
@@ -48,9 +49,9 @@ void main() {
   test('PrefItem checking', () async {
     final storage = RamPrefsStorage();
 
-    final pi = PrefItem<int>(storage, "pi", checkValue: (val) {
+    final pi = PrefItem<int>(storage, 'pi', checkValue: (val) {
       //print("checkValue $val");
-      if (val < 0) throw ArgumentError.value(val);
+      if (val! < 0) throw ArgumentError.value(val);
     });
 
     await pi.write(0);
@@ -63,9 +64,9 @@ void main() {
 
   test('PrefItem async reading by the constructor', () async {
     final storage = RamPrefsStorage();
-    await storage.setInt("x", 23);
+    await storage.setInt('x', 23);
 
-    final pi = PrefItem<int>(storage, "x");
+    final pi = PrefItem<int>(storage, 'x');
     expect(pi.value, null);
     var a = await pi.initialized; // дожидаемся, пока значение подгрузится
     var b = await pi.initialized; // повторное ожидание погоды не делает
@@ -81,7 +82,7 @@ void main() {
     int notifications = 0;
     final storage = RamPrefsStorage();
 
-    final pi = PrefItem<int>(storage, "unset");
+    final pi = PrefItem<int>(storage, 'unset');
     pi.addListener(() {
       notifications++;
     });
@@ -110,12 +111,12 @@ void main() {
   });
 
   test('PrefItem writing value before reading', () async {
-    testVal(initialVal) async {
+    Future testVal(int? initialVal) async {
       int notifications = 0;
       final storage = RamPrefsStorage();
-      if (initialVal != null) storage.setInt("x", initialVal);
+      if (initialVal != null) await storage.setInt('x', initialVal);
 
-      final pi = PrefItem<int>(storage, "x");
+      final pi = PrefItem<int>(storage, 'x');
       pi.addListener(() {
         notifications++;
       });
@@ -137,18 +138,18 @@ void main() {
 
   test('PrefItem firstReadOrWrite', () async {
     final storage = RamPrefsStorage();
-    final pi = PrefItem<int>(storage, "x");
+    final pi = PrefItem<int>(storage, 'x');
     expect(pi.value, null);
     expect(pi.isInitialized, false);
-    pi.write(23); // это синхронная функция
+    unawaited(pi.write(23)); // это синхронная функция
     expect(pi.isInitialized, true);
     expect(pi.value, 23); // значение изменилось сразу
   });
 
   test('PrefItem constructor reading', () async {
     final storage = RamPrefsStorage();
-    storage.setInt("x", 23);
-    final pi = PrefItem<int>(storage, "x");
+    unawaited(storage.setInt('x', 23));
+    final pi = PrefItem<int>(storage, 'x');
     expect(pi.value, null);
     await pi.initialized;
     expect(pi.value, 23);
@@ -156,7 +157,7 @@ void main() {
 
   test('PrefItem constructor initializing NULL', () async {
     final storage = RamPrefsStorage();
-    final pi = PrefItem<int>(storage, "x", initFunc: () => 42);
+    final pi = PrefItem<int>(storage, 'x', initFunc: () => 42);
     expect(pi.value, null);
     await pi.initialized;
     expect(pi.value, 42);
@@ -166,8 +167,8 @@ void main() {
     // функция инициализации задана, но значение уже есть - и потому не должно измениться
 
     final storage = RamPrefsStorage();
-    storage.setInt("x", 23);
-    final pi = PrefItem<int>(storage, "x", initFunc: () => 42);
+    unawaited(storage.setInt('x', 23));
+    final pi = PrefItem<int>(storage, 'x', initFunc: () => 42);
     expect(pi.value, null);
     await pi.initialized;
     expect(pi.value, 23);
