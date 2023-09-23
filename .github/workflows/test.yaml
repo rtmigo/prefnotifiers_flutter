@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest] #, windows-latest, macos-latest]
-        version: ['2.10.0', '3.13.5']
+        version: ['2.17.0', '3.13.5']
     steps:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
