@@ -2,7 +2,6 @@
 // Use of this source code is governed by the BSD-3-Clause license found
 // in the LICENSE file in the root directory of this source tree
 
-import 'dart:async';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:prefnotifiers/prefnotifiers.dart';
 

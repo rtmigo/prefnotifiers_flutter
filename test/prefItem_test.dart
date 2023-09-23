@@ -111,7 +111,7 @@ void main() {
   });
 
   test('PrefItem writing value before reading', () async {
-    Future testVal(int? initialVal) async {
+    Future<dynamic> testVal(int? initialVal) async {
       int notifications = 0;
       final storage = RamPrefsStorage();
       if (initialVal != null) await storage.setInt('x', initialVal);
@@ -127,7 +127,7 @@ void main() {
 
       // хотя асинхронное чтение идет ПОСЛЕ этого - значением остается 23, а не исходное
 
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future<dynamic>.delayed(const Duration(milliseconds: 100));
       expect(pi.value, 23);
       expect(notifications, 1);
     }

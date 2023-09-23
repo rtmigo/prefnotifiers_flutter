@@ -23,10 +23,10 @@ import 'dart:async';
 ///   await readFunc();
 /// ```
 class AwaitableCalls {
-  final List<Completer> _items = <Completer>[];
+  final List<Completer<void>> _items = <Completer<void>>[];
 
-  Future run(func) async {
-    Completer? c = Completer();
+  Future<void> run(Future<void> Function() func) async {
+    Completer<void>? c = Completer();
     this._items.add(c);
 
     try {
