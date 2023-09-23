@@ -13,7 +13,7 @@ import '10_awaitableCalls.dart';
 //class PrefItemNotFoundError implements Exception {} // outdated?
 //class PrefItemNotInitializedError implements Exception {}  // outdated?
 
-typedef CheckValueFunc<T> = Function(T val);
+typedef CheckValueFunc<T> = void Function(T val);
 typedef AdjustFunc<T> = T? Function(T? old);
 
 enum ItemType {
@@ -271,7 +271,7 @@ class PrefItem<T> extends ChangeNotifier implements ValueNotifier<T?> {
   Future<T?> get initializedValue =>
       this.initialized.then((prefitem) => prefitem.value);
 
-  void toWaitList(List<Future> list) {
+  void toWaitList(List<Future<dynamic>> list) {
     list.add(this.initialized);
   }
 }

@@ -29,7 +29,7 @@ void main() {
 
     pi.value = 'delta';
     expect(pi.value, 'delta');
-    await Future.delayed(Duration(milliseconds: 10));
+    await Future<dynamic>.delayed(const Duration(milliseconds: 10));
     expect(await pi.read(), 'delta');
 
     await pi.write(null);
